@@ -14,12 +14,12 @@ function getView(){
         addToView('pi', pi(1000000))
         addToView('logaritmoNatural', logaritmoNatural(3, 3))
         addToView('razaoAurea', razaoAurea(3,4,3))
-        addToView('quadradoPerfeito', quadradoPerfeito(3))
+        addToView('quadradoPerfeito', quadradoPerfeito(9))
         addToView('raiz', raiz(9,3))
         addToView('primo', primo(3))
         addToView('crivoErastotenes', crivoErastotenes([1, 2, 3], 3))
         addToView('mdc', mdc(81, 54))
-        addToView('mdc2', mdc2([81, 54], 27))
+        addToView('mdc2', mdc2(81, 54))
         addToView('horner', horner(3, 4, 5, 6, 7))
         addToView('fibonacci', fibonacci(3))
         addToView('cpf', cpf([9,3,0,9,1,9,8,5,0,8,3]))
@@ -295,7 +295,17 @@ function crivoErastotenes(a, n){
             arguments[i]==0
         ){
             i=2
-            //TODO: Completar algoritmo
+            limite=Math.abs(Math.sqrt(n))
+            while(i<=limite){
+                if(a[i]=0){
+                    multiplo=i+1
+                    while (multiplo<=n){
+                        a[multiplo]=1
+                        multiplo=multiplo+1
+                    }
+                }
+                i=i+1
+            }
         }else{
             throw new Error('Argumento Inválido');
         }
@@ -304,60 +314,106 @@ function crivoErastotenes(a, n){
 
 function mdc(a, b){
     if(
-        true
+        b<a     &&
+        0<b
     ){
+        while(b!=0){
+            m=a%b
+            a=b
+            b=m
+        }
+        return a
     }else{
-
         throw new Error('Argumento Inválido');
     }
 }
 
-function mdc2(a, n){
+function mdc2(a, b){
     if(
-        true
+        b<a     &&
+        0<b
     ){
+        while(a!=b){
+            if(a>b){
+                a=a-b
+            }else{
+                b=b-a
+            }
+        }
+        return a
     }else{
-
         throw new Error('Argumento Inválido');
     }
 }
 
 function horner(/*x, g, ag, ag-1, ..., a0*/){
     if(
-        true
+        1<=arguments[1]
     ){
+        p=arguments[3]
+        i=arguments[1]-1
+        while(0<=i){
+            p*=arguments[0]+arguments[i+2]
+            i=i-1
+        }
+        return p
     }else{
-
         throw new Error('Argumento Inválido');
     }
 }
 
 function fibonacci(n){
     if(
-        true
+        0<=n
     ){
+        a=0
+        c=1
+        if(n==0  || n==1){
+            return n
+        }
+        i=2
+        while(i<=n){
+            t=c
+            c+=a
+            a=t
+            i+=1
+        }
+        return c
     }else{
-
         throw new Error('Argumento Inválido');
     }
 }
 
 function cpf(d){
     if(
-        true
+        d.length==11
     ){
+        j=d[0]+(2*d[1])+(3*d[2])+(4*d[3])+(5*d[4])+(6*d[5])+(7*d[6])+(8*d[8])
+        k=d[1]+(2*d[2])+(3*d[3])+(4*d[4])+(5*d[5])+(6*d[6])+(7*d[8])+(8*d[9])
+        dj=((j%11)%10)
+        dk=((k%11)%10)
+        return (dj==d[10]    &&     dk==d[11])
     }else{
-
         throw new Error('Argumento Inválido');
     }
 }
 
 function cpf2(d){
-    if(        
-        true
+    if(
+        d.length==11
     ){
+        c=8
+        p=d[9]
+        s=d[9]
+        while(1<=c){
+            p+=d[c]
+            s+=p
+            c-=1
+        }
+        j=((s%11)%10)
+        k=((s-p+9*d[10])%11)%10
+        return (j==d[10]    &&    k==d[11])
     }else{
-
         throw new Error('Argumento Inválido');
     }
 }
