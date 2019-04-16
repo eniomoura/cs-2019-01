@@ -17,10 +17,10 @@ function getView(){
         addToView('quadradoPerfeito', quadradoPerfeito(9))
         addToView('raiz', raiz(9,3))
         addToView('primo', primo(3))
-        addToView('crivoErastotenes', crivoErastotenes([1, 2, 3], 3))
+        addToView('crivoErastotenes', crivoErastotenes([2, 3], 2))
         addToView('mdc', mdc(81, 54))
         addToView('mdc2', mdc2(81, 54))
-        addToView('horner', horner(3, 4, 5, 6, 7))
+        addToView('horner', horner(3, 2, 5, 6, 7))
         addToView('fibonacci', fibonacci(3))
         addToView('cpf', cpf([9,3,0,9,1,9,8,5,0,8,3]))
         addToView('cpf2', cpf2([9,3,0,9,1,9,8,5,0,8,3]))
@@ -120,7 +120,7 @@ function somaNaturais(n){
 }
 
 function fatorial(n){
-    if( n<=i 
+    if( 1<=n
     ){
 
         i=2
@@ -147,8 +147,8 @@ function produto(a, b){
             totalParcelas=b
             parcela=a
         }
-        i=1
-        s=0
+        let i=1
+        let s=0
         while(i<=totalParcelas){
             s+=parcela
             i+=1
@@ -275,7 +275,7 @@ function primo(n){
         n>1
     ){
         i=2
-        while(i<=n){
+        while(i<n){
             if(n%i==0){
                 return false
             }
@@ -288,16 +288,16 @@ function primo(n){
 }
 
 function crivoErastotenes(a, n){
-    for(i=0;i<arguments.length;i++){
+    for(i=0;i<a.length;i++){
         if(
             n>1             &&
             !(i>2 && i>n)   ||
-            arguments[i]==0
+            a[i]==0
         ){
             i=2
             limite=Math.abs(Math.sqrt(n))
             while(i<=limite){
-                if(a[i]=0){
+                if(a[i]==0){
                     multiplo=i+1
                     while (multiplo<=n){
                         a[multiplo]=1
@@ -309,6 +309,12 @@ function crivoErastotenes(a, n){
         }else{
             throw new Error('Argumento Inválido');
         }
+        console.log(a.length, i)
+    }
+    if(i==a.length+1){
+        return a;
+    }else{
+        throw new Error("Argumento Inválido");
     }
 }
 
@@ -388,11 +394,11 @@ function cpf(d){
     if(
         d.length==11
     ){
-        j=d[0]+(2*d[1])+(3*d[2])+(4*d[3])+(5*d[4])+(6*d[5])+(7*d[6])+(8*d[8])
-        k=d[1]+(2*d[2])+(3*d[3])+(4*d[4])+(5*d[5])+(6*d[6])+(7*d[8])+(8*d[9])
+        j=d[0]+(2*d[1])+(3*d[2])+(4*d[3])+(5*d[4])+(6*d[5])+(7*d[6])+(8*d[7])+(9*d[8])
+        k=d[1]+(2*d[2])+(3*d[3])+(4*d[4])+(5*d[5])+(6*d[6])+(7*d[7])+(8*d[8])+(9*d[9])
         dj=((j%11)%10)
         dk=((k%11)%10)
-        return (dj==d[10]    &&     dk==d[11])
+        return (dj==d[9]    &&     dk==d[10])
     }else{
         throw new Error('Argumento Inválido');
     }
@@ -403,16 +409,16 @@ function cpf2(d){
         d.length==11
     ){
         c=8
-        p=d[9]
-        s=d[9]
-        while(1<=c){
+        p=d[8]
+        s=d[8]
+        while(0<=c){
             p+=d[c]
             s+=p
             c-=1
         }
         j=((s%11)%10)
-        k=((s-p+9*d[10])%11)%10
-        return (j==d[10]    &&    k==d[11])
+        k=((s-p+9*d[9])%11)%10
+        return (j==d[9]    &&    k==d[10])
     }else{
         throw new Error('Argumento Inválido');
     }
