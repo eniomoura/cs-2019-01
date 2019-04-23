@@ -41,8 +41,7 @@ function propriedade3025(n) {
 
         const i = Math.floor(n / 100);
         const j = Math.floor(n % 100);
-        return ((i + j) * (i + j) == n);
-
+        return (i + j) * (i + j) == n;
     } else {
         throw new Error('Argumento Inválido');
     }
@@ -60,7 +59,7 @@ function propriedade153(cdu) {
         return ((c * c * c) + (d * d * d) + (u * u * u) == cdu).toString()
 
     } else {
-        throw new Error('Argumento Inválido');
+        throw new RangeError('Valor fora da faixa');
     }
 }
 
