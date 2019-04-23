@@ -39,9 +39,9 @@ function propriedade3025(n) {
         n < 9999
     ) {
 
-        const i = Math.floor(n / 100)
-        const j = Math.floor(n % 100)
-        return ((i + j) * (i + j) == n).toString()
+        const i = Math.floor(n / 100);
+        const j = Math.floor(n % 100);
+        return ((i + j) * (i + j) == n);
 
     } else {
         throw new Error('Argumento Inválido');
