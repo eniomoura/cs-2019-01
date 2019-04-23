@@ -325,6 +325,7 @@ public class Algoritmos {
     }
 
     static int horner(int... arguments) {
+        // TODO verificar se argumentos fornecidos conforme exigência
         int p, i;
         if (
                 1 <= arguments[1]
