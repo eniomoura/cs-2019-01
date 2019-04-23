@@ -26,13 +26,13 @@ public class Algoritmos {
         System.out.println("cpf2: " + cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
     }
 
-    static Boolean propriedade3025(int n) {
+    static Boolean propriedade3025(final int n) {
         if (n <= 0 || n > 9999) {
             throw new IllegalArgumentException("Argumento Inválido");
         }
 
-        int i = n / 100;
-        int j = n % 100;
+        final int i = n / 100;
+        final int j = n % 100;
         return ((i + j) * (i + j) == n);
     }
 
