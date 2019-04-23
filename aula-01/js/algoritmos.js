@@ -39,8 +39,8 @@ function propriedade3025(n) {
         n < 9999
     ) {
 
-        const i = parseInt(n / 100)
-        const j = parseInt(n % 100)
+        const i = Math.floor(n / 100)
+        const j = Math.floor(n % 100)
         return ((i + j) * (i + j) == n).toString()
 
     } else {
