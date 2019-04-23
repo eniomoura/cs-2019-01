@@ -26,17 +26,14 @@ public class Algoritmos {
         System.out.println("cpf2: " + cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
     }
 
-    //INÍCIO DOS EXERCÍCIOS
     static Boolean propriedade3025(int n) {
-        if (0 < n &&
-                n < 9999
-        ) {
-            int i = n / 100;
-            int j = n % 100;
-            return ((i + j) * (i + j) == n);
-        } else {
+        if (n <= 0 || n > 9999) {
             throw new Error("Argumento Inválido");
         }
+
+        int i = n / 100;
+        int j = n % 100;
+        return ((i + j) * (i + j) == n);
     }
 
     static Boolean propriedade153(int cdu) {
