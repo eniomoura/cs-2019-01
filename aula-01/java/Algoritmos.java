@@ -26,7 +26,7 @@ public class Algoritmos {
         System.out.println("cpf2: " + cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
     }
 
-    static Boolean propriedade3025(final int n) {
+    static boolean propriedade3025(final int n) {
         if (n <= 0 || n > 9999) {
             throw new IllegalArgumentException("Argumento Inválido");
         }
