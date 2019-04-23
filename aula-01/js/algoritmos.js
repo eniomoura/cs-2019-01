@@ -34,7 +34,6 @@ function addToView(name, value){
         view+='<br><br>'+name+':\t'+value
 }
 
-//INÍCIO DOS EXERCÍCIOS
 function propriedade3025(n){
     if( 0<n     &&
         n<9999  
