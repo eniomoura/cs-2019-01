@@ -28,7 +28,7 @@ public class Algoritmos {
 
     static Boolean propriedade3025(int n) {
         if (n <= 0 || n > 9999) {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
 
         int i = n / 100;
