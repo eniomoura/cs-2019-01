@@ -35,10 +35,7 @@ function addToView(name, value) {
 }
 
 function propriedade3025(n) {
-    if (0 < n &&
-        n < 9999
-    ) {
-
+    if (0 < n && n < 9999) {
         const i = Math.floor(n / 100);
         const j = Math.floor(n % 100);
         return (i + j) * (i + j) == n;
@@ -48,62 +45,44 @@ function propriedade3025(n) {
 }
 
 function propriedade153(cdu) {
-    if (100 <= cdu &&
-        cdu <= 999
-    ) {
-
+    if (100 <= cdu && cdu <= 999) {
         c = parseInt(cdu / 100)
         du = parseInt(cdu % 100)
         d = parseInt(du / 10)
         u = parseInt(du % 10)
         return ((c * c * c) + (d * d * d) + (u * u * u) == cdu).toString()
-
     } else {
         throw new RangeError('Valor fora da faixa');
     }
 }
 
 function diaDaSemana(d, m, a) {
-    if (1 <= d &&
-        d <= 31 &&
-        1 <= m &&
-        m <= 12 &&
-        a > 1753
-    ) {
-
+    if (1 <= d && d <= 31 && 1 <= m && m <= 12 && a > 1753) {
         if (m == 1 || m == 2) {
             m = m + 12
             a = a - 1
         }
         s = d + (2 * m) + ((3 * (m + 1)) / 5) + a + (a / 4) - (a / 100) + (a / 400)
         return parseInt(s % 7)
-
     } else {
         throw new Error('Argumento Inválido');
     }
 }
 
 function mod(x, y) {
-
-    if (0 <= y &&
-        0 < x
-    ) {
-
+    if (0 <= y && 0 < x) {
         s = x
         while (y <= s) {
             s = s - y
         }
         return s
-
     } else {
         throw new Error('Argumento Inválido');
     }
 }
 
 function somaNaturais(n) {
-    if (0 <= n
-    ) {
-
+    if (0 <= n) {
         i = 2
         s = 1
         while (i <= n) {
@@ -118,9 +97,7 @@ function somaNaturais(n) {
 }
 
 function fatorial(n) {
-    if (1 <= n
-    ) {
-
+    if (1 <= n) {
         i = 2
         f = 1
         while (i <= n) {
@@ -128,17 +105,13 @@ function fatorial(n) {
             i = i + 1
         }
         return f
-
     } else {
         throw new Error('Argumento Inválido');
     }
 }
 
 function produto(a, b) {
-    if (0 <= a &&
-        0 <= b
-    ) {
-
+    if (0 <= a && 0 <= b) {
         totalParcelas = a
         parcela = b
         if (b < a) {
@@ -159,10 +132,7 @@ function produto(a, b) {
 }
 
 function potencia(x, y) {
-    if (0 < x &&
-        0 <= y
-    ) {
-
+    if (0 < x && 0 <= y) {
         let potencia = 1
         i = 1
         while (i <= y) {
@@ -170,15 +140,13 @@ function potencia(x, y) {
             i += 1
         }
         return potencia
-
     } else {
         throw new Error('Argumento Inválido');
     }
 }
 
 function pi(n) {
-    if (1 <= n
-    ) {
+    if (1 <= n) {
         i = 1
         s = -1
         d = -1
@@ -196,9 +164,7 @@ function pi(n) {
 }
 
 function logaritmoNatural(n, k) {
-    if (1 <= n &&
-        2 <= k
-    ) {
+    if (1 <= n && 2 <= k) {
         i = 2
         e = 1 + n
         numerador = 2
@@ -216,11 +182,7 @@ function logaritmoNatural(n, k) {
 }
 
 function razaoAurea(x, y, k) {
-    if (
-        0 <= x &&
-        x < y &&
-        0 < k
-    ) {
+    if (0 <= x && x < y && 0 < k) {
         c = y
         a = x
         i = 1
@@ -238,9 +200,7 @@ function razaoAurea(x, y, k) {
 }
 
 function quadradoPerfeito(n) {
-    if (
-        1 < n
-    ) {
+    if (1 < n) {
         i = 1
         s = 1
         while (s < n) {
@@ -254,9 +214,7 @@ function quadradoPerfeito(n) {
 }
 
 function raiz(n, i) {
-    if (
-        0 < n
-    ) {
+    if (0 < n) {
         r = 1
         while (0 <= i) {
             r = (r + n / r) / 2
@@ -269,9 +227,7 @@ function raiz(n, i) {
 }
 
 function primo(n) {
-    if (
-        n > 1
-    ) {
+    if (n > 1) {
         i = 2
         while (i < n) {
             if (n % i == 0) {
@@ -287,11 +243,7 @@ function primo(n) {
 
 function crivoErastotenes(a, n) {
     for (i = 0; i < a.length; i++) {
-        if (
-            n > 1 &&
-            !(i > 2 && i > n) ||
-            a[i] == 0
-        ) {
+        if (n > 1 && !(i > 2 && i > n) || a[i] == 0) {
             i = 2
             limite = Math.abs(Math.sqrt(n))
             while (i <= limite) {
@@ -307,7 +259,6 @@ function crivoErastotenes(a, n) {
         } else {
             throw new Error('Argumento Inválido');
         }
-        console.log(a.length, i)
     }
     if (i == a.length + 1) {
         return a;
@@ -317,10 +268,7 @@ function crivoErastotenes(a, n) {
 }
 
 function mdc(a, b) {
-    if (
-        b < a &&
-        0 < b
-    ) {
+    if (b < a && 0 < b) {
         while (b != 0) {
             m = a % b
             a = b
@@ -333,10 +281,7 @@ function mdc(a, b) {
 }
 
 function mdc2(a, b) {
-    if (
-        b < a &&
-        0 < b
-    ) {
+    if (b < a && 0 < b) {
         while (a != b) {
             if (a > b) {
                 a = a - b
@@ -351,9 +296,7 @@ function mdc2(a, b) {
 }
 
 function horner(/*x, g, ag, ag-1, ..., a0*/) {
-    if (
-        1 <= arguments[1]
-    ) {
+    if (1 <= arguments[1]) {
         p = arguments[3]
         i = arguments[1] - 1
         while (0 <= i) {
@@ -367,9 +310,7 @@ function horner(/*x, g, ag, ag-1, ..., a0*/) {
 }
 
 function fibonacci(n) {
-    if (
-        0 <= n
-    ) {
+    if (0 <= n) {
         a = 0
         c = 1
         if (n == 0 || n == 1) {
@@ -389,9 +330,7 @@ function fibonacci(n) {
 }
 
 function cpf(d) {
-    if (
-        d.length == 11
-    ) {
+    if (d.length == 11) {
         j = d[0] + (2 * d[1]) + (3 * d[2]) + (4 * d[3]) + (5 * d[4]) + (6 * d[5]) + (7 * d[6]) + (8 * d[7]) + (9 * d[8])
         k = d[1] + (2 * d[2]) + (3 * d[3]) + (4 * d[4]) + (5 * d[5]) + (6 * d[6]) + (7 * d[7]) + (8 * d[8]) + (9 * d[9])
         dj = ((j % 11) % 10)
@@ -403,9 +342,7 @@ function cpf(d) {
 }
 
 function cpf2(d) {
-    if (
-        d.length == 11
-    ) {
+    if (d.length == 11) {
         c = 8
         p = d[8]
         s = d[8]

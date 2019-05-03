@@ -37,9 +37,7 @@ public class Algoritmos {
     }
 
     static Boolean propriedade153(int cdu) {
-        if (100 <= cdu &&
-                cdu <= 999
-        ) {
+        if (100 <= cdu && cdu <= 999) {
             int c = cdu / 100;
             int du = cdu % 100;
             int d = du / 10;
@@ -51,11 +49,7 @@ public class Algoritmos {
     }
 
     static int diaDaSemana(int d, int m, int a) {
-        if (1 <= d &&
-                d <= 31 &&
-                1 <= m &&
-                m <= 12 &&
-                a > 1753
+        if (1 <= d && d <= 31 && 1 <= m && m <= 12 && a > 1753
         ) {
             if (m == 1 || m == 2) {
                 m = m + 12;
@@ -70,9 +64,7 @@ public class Algoritmos {
     }
 
     static int mod(int x, int y) {
-        if (0 <= y &&
-                0 < x
-        ) {
+        if (0 <= y && 0 < x) {
             int s = x;
             while (y <= s) {
                 s = s - y;
@@ -112,9 +104,7 @@ public class Algoritmos {
     }
 
     static int produto(int a, int b) {
-        if (0 <= a &&
-                0 <= b
-        ) {
+        if (0 <= a && 0 <= b) {
             int totalParcelas = a;
             int parcela = b;
             if (b < a) {
@@ -134,9 +124,7 @@ public class Algoritmos {
     }
 
     static int potencia(int x, int y) {
-        if (0 < x &&
-                0 <= y
-        ) {
+        if (0 < x && 0 <= y) {
             int potencia = 1;
             int i = 1;
             while (i <= y) {
@@ -168,9 +156,7 @@ public class Algoritmos {
     }
 
     static double logaritmoNatural(int n, int k) {
-        if (1 <= n &&
-                2 <= k
-        ) {
+        if (1 <= n && 2 <= k) {
             double i = 2;
             double e = 1 + n;
             double numerador = 2;
@@ -188,11 +174,7 @@ public class Algoritmos {
     }
 
     static double razaoAurea(int x, int y, int k) {
-        if (
-                0 <= x &&
-                        x < y &&
-                        0 < k
-        ) {
+        if (0 <= x && x < y && 0 < k) {
             double c = y;
             double a = x;
             double i = 1;
@@ -207,13 +189,10 @@ public class Algoritmos {
         } else {
             throw new Error("Argumento Inválido");
         }
-
     }
 
     static Boolean quadradoPerfeito(int n) {
-        if (
-                1 < n
-        ) {
+        if (1 < n) {
             int i = 1;
             int s = 1;
             while (s < n) {
@@ -227,9 +206,7 @@ public class Algoritmos {
     }
 
     static double raiz(int n, int i) {
-        if (
-                0 < n
-        ) {
+        if (0 < n) {
             double r = 1;
             while (0 <= i) {
                 r = (r + n / r) / 2;
@@ -242,9 +219,7 @@ public class Algoritmos {
     }
 
     static Boolean primo(int n) {
-        if (
-                n > 1
-        ) {
+        if (n > 1) {
             int i = 2;
             while (i < n) {
                 if (n % i == 0) {
@@ -262,11 +237,7 @@ public class Algoritmos {
         int i;
         int multiplo;
         for (i = 0; i < a.length; i++) {
-            if (
-                    n > 1 &&
-                            !(i > 2 && i > n) ||
-                            a[i] == 0
-            ) {
+            if (n > 1 && !(i > 2 && i > n) || a[i] == 0) {
                 i = 2;
                 double limite = Math.abs(Math.sqrt(n));
                 while (i <= limite) {
@@ -291,10 +262,7 @@ public class Algoritmos {
     }
 
     static int mdc(int a, int b) {
-        if (
-                b < a &&
-                        0 < b
-        ) {
+        if (b < a && 0 < b) {
             while (b != 0) {
                 int m = a % b;
                 a = b;
@@ -307,10 +275,7 @@ public class Algoritmos {
     }
 
     static int mdc2(int a, int b) {
-        if (
-                b < a &&
-                        0 < b
-        ) {
+        if (b < a &&0 < b) {
             while (a != b) {
                 if (a > b) {
                     a = a - b;
@@ -327,9 +292,7 @@ public class Algoritmos {
     static int horner(int... arguments) {
         // TODO verificar se argumentos fornecidos conforme exigência
         int p, i;
-        if (
-                1 <= arguments[1]
-        ) {
+        if (1 <= arguments[1]) {
             p = arguments[3];
             i = arguments[1] - 1;
             while (0 <= i) {
@@ -344,9 +307,7 @@ public class Algoritmos {
 
     static int fibonacci(int n) {
         int a, c, t, i;
-        if (
-                0 <= n
-        ) {
+        if (0 <= n) {
             a = 0;
             c = 1;
             if (n == 0 || n == 1) {
@@ -366,9 +327,7 @@ public class Algoritmos {
     }
 
     static Boolean cpf(int[] d) {
-        if (
-                d.length == 11
-        ) {
+        if (d.length == 11) {
             int j = d[0] + (2 * d[1]) + (3 * d[2]) + (4 * d[3]) + (5 * d[4]) + (6 * d[5]) + (7 * d[6]) + (8 * d[7]) + (9 * d[8]);
             int k = d[1] + (2 * d[2]) + (3 * d[3]) + (4 * d[4]) + (5 * d[5]) + (6 * d[6]) + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
             int dj = ((j % 11) % 10);
@@ -381,9 +340,7 @@ public class Algoritmos {
 
     static Boolean cpf2(int[] d) {
         int c, p, s, j, k;
-        if (
-                d.length == 11
-        ) {
+        if (d.length == 11) {
             c = 8;
             p = d[8];
             s = d[8];
