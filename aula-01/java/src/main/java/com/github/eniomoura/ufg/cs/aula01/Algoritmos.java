@@ -1,3 +1,5 @@
+package com.github.eniomoura.ufg.cs.aula01;
+
 import java.util.Arrays;
 
 public class Algoritmos {
@@ -59,7 +61,7 @@ public class Algoritmos {
             return s % 7;
 
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -291,7 +293,8 @@ public class Algoritmos {
 
     static int horner(int... arguments) {
         // TODO verificar se argumentos fornecidos conforme exigência
-        int p, i;
+        int p,
+            i;
         if (1 <= arguments[1]) {
             p = arguments[3];
             i = arguments[1] - 1;
@@ -306,7 +309,10 @@ public class Algoritmos {
     }
 
     static int fibonacci(int n) {
-        int a, c, t, i;
+        int a,
+            c,
+            t,
+            i;
         if (0 <= n) {
             a = 0;
             c = 1;
@@ -339,7 +345,11 @@ public class Algoritmos {
     }
 
     static Boolean cpf2(int[] d) {
-        int c, p, s, j, k;
+        int c,
+            p,
+            s,
+            j,
+            k;
         if (d.length == 11) {
             c = 8;
             p = d[8];
