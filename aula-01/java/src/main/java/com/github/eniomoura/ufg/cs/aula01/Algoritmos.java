@@ -1,30 +1,33 @@
-import java.util.Arrays;
+package com.github.eniomoura.ufg.cs.aula01;
 
 public class Algoritmos {
-    //MÉTODO MAIN
+    //region MÉTODO MAIN
     public static void main(String[] args) {
-        System.out.println("propriedade3025: " + propriedade3025(3025));
-        System.out.println("propriedade153: " + propriedade153(153));
-        System.out.println("diaDaSemana: " + diaDaSemana(11, 4, 2019));
-        System.out.println("mod: " + mod(5, 3));
-        System.out.println("somaNaturais: " + somaNaturais(3));
-        System.out.println("fatorial: " + fatorial(3));
-        System.out.println("produto: " + produto(4, 3));
-        System.out.println("potencia: " + potencia(3, 3));
-        System.out.println("pi: " + pi(1000000));
-        System.out.println("logaritmoNatural: " + logaritmoNatural(3, 3));
-        System.out.println("razaoAurea: " + razaoAurea(3, 4, 3));
-        System.out.println("quadradoPerfeito: " + quadradoPerfeito(9));
-        System.out.println("raiz: " + raiz(9, 3));
-        System.out.println("primo: " + primo(3));
-        System.out.println("crivoErastotenes: " + Arrays.toString(crivoErastotenes(new int[]{2, 3}, 2)));
-        System.out.println("mdc: " + mdc(81, 54));
-        System.out.println("mdc2: " + mdc2(81, 54));
-        System.out.println("horner: " + horner(3, 2, 5, 6, 7));
-        System.out.println("fibonacci: " + fibonacci(3));
-        System.out.println("cpf: " + cpf(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
-        System.out.println("cpf2: " + cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
+//        System.out.println("propriedade3025: " + propriedade3025(3025));
+//        System.out.println("propriedade153: " + propriedade153(153));
+//        System.out.println("diaDaSemana: " + diaDaSemana(11, 4, 2019));
+//        System.out.println("mod: " + mod(5, 3));
+//        System.out.println("somaNaturais: " + somaNaturais(3));
+//        System.out.println("fatorial: " + fatorial(3));
+//        System.out.println("produto: " + produto(4, 3));
+//        System.out.println("potencia: " + potencia(3, 3));
+//        System.out.println("pi: " + pi(1000000));
+//        System.out.println("logaritmoNatural: " + logaritmoNatural(3, 3));
+//        System.out.println("razaoAurea: " + razaoAurea(3, 4, 3));
+//        System.out.println("quadradoPerfeito: " + quadradoPerfeito(9));
+//        System.out.println("raiz: " + raiz(9, 3));
+//        System.out.println("primo: " + primo(3));
+//        System.out.println("crivoErastotenes: " + Arrays.toString(crivoErastotenes(new int[]{2, 3}, 2)));
+//        System.out.println("mdc: " + mdc(81, 54));
+//        System.out.println("mdc2: " + mdc2(81, 54));
+//        System.out.println("horner: " + horner(3, 2, 5, 6, 7));
+//        System.out.println("fibonacci: " + fibonacci(3));
+//        System.out.println("cpf: " + cpf(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
+//        System.out.println("cpf2: " + cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
     }
+    //endregion
+
+    //region Algoritmos
 
     static boolean propriedade3025(final int n) {
         if (n <= 0 || n > 9999) {
@@ -44,23 +47,19 @@ public class Algoritmos {
             int u = du % 10;
             return ((c * c * c) + (d * d * d) + (u * u * u) == cdu);
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
     static int diaDaSemana(int d, int m, int a) {
-        if (1 <= d && d <= 31 && 1 <= m && m <= 12 && a > 1753
-        ) {
-            if (m == 1 || m == 2) {
-                m = m + 12;
-                a = a - 1;
-            }
-            int s = d + (2 * m) + ((3 * (m + 1)) / 5) + a + (a / 4) - (a / 100) + (a / 400);
-            return s % 7;
-
-        } else {
-            throw new Error("Argumento Inválido");
+        validaDiaDaSemana(d, m, a);
+        if (m == 1 || m == 2) {
+            m = m + 12;
+            a = a - 1;
         }
+        int s = d + (2 * m) + ((3 * (m + 1)) / 5) +
+                a + (a / 4) - (a / 100) + (a / 400);
+        return s % 7;
     }
 
     static int mod(int x, int y) {
@@ -71,7 +70,7 @@ public class Algoritmos {
             }
             return s;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -85,7 +84,7 @@ public class Algoritmos {
             }
             return s;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -99,7 +98,7 @@ public class Algoritmos {
             }
             return f;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -119,7 +118,7 @@ public class Algoritmos {
             }
             return s;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -133,7 +132,7 @@ public class Algoritmos {
             }
             return potencia;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -151,7 +150,7 @@ public class Algoritmos {
             }
             return p;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -169,7 +168,7 @@ public class Algoritmos {
             }
             return e;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -187,7 +186,7 @@ public class Algoritmos {
             }
             return c / a;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -201,7 +200,7 @@ public class Algoritmos {
             }
             return s == n;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -214,7 +213,7 @@ public class Algoritmos {
             }
             return r;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -229,7 +228,7 @@ public class Algoritmos {
             }
             return true;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -251,13 +250,13 @@ public class Algoritmos {
                     i = i + 1;
                 }
             } else {
-                throw new Error("Argumento Inválido");
+                throw new IllegalArgumentException("Argumento Inválido");
             }
         }
         if (i == a.length + 1) {
             return a;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -270,12 +269,12 @@ public class Algoritmos {
             }
             return a;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
     static int mdc2(int a, int b) {
-        if (b < a &&0 < b) {
+        if (b < a && 0 < b) {
             while (a != b) {
                 if (a > b) {
                     a = a - b;
@@ -285,13 +284,14 @@ public class Algoritmos {
             }
             return a;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
     static int horner(int... arguments) {
         // TODO verificar se argumentos fornecidos conforme exigência
-        int p, i;
+        int p,
+                i;
         if (1 <= arguments[1]) {
             p = arguments[3];
             i = arguments[1] - 1;
@@ -301,12 +301,15 @@ public class Algoritmos {
             }
             return p;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
     static int fibonacci(int n) {
-        int a, c, t, i;
+        int a,
+                c,
+                t,
+                i;
         if (0 <= n) {
             a = 0;
             c = 1;
@@ -322,7 +325,7 @@ public class Algoritmos {
             }
             return c;
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
@@ -334,12 +337,16 @@ public class Algoritmos {
             int dk = ((k % 11) % 10);
             return (dj == d[9] && dk == d[10]);
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
     static Boolean cpf2(int[] d) {
-        int c, p, s, j, k;
+        int c,
+                p,
+                s,
+                j,
+                k;
         if (d.length == 11) {
             c = 8;
             p = d[8];
@@ -353,7 +360,58 @@ public class Algoritmos {
             k = ((s - p + 9 * d[9]) % 11) % 10;
             return (j == d[9] && k == d[10]);
         } else {
-            throw new Error("Argumento Inválido");
+            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
+    //endregion
+
+    //region Validações
+
+    static void validaDiaDaSemana(int d, int m, int a) {
+        if (d < 1 || d > 31) {
+            if (m < 1 || m > 12) {
+                if (a < 1753) {
+                    throw new IllegalArgumentException("Argumento Inválido");
+                }
+            }
+        }
+    }
+
+    static void validaRazaoAurea(int x, int y, int k) {
+        if (0 <= x && x < y && 0 < k) {
+            throw new IllegalArgumentException("Argumento Inválido");
+        }
+    }
+
+    static void validaCrivo(int[] a, int n) {
+        int i;
+        int multiplo;
+        for (i = 0; i < a.length; i++) {
+            if (n > 1 && !(i > 2 && i > n) || a[i] == 0) {
+                i = 2;
+                double limite = Math.abs(Math.sqrt(n));
+                while (i <= limite) {
+                    if (a[i] == 0) {
+                        multiplo = i + 1;
+                        while (multiplo <= n) {
+                            a[multiplo] = 1;
+                            multiplo = multiplo + 1;
+                        }
+                    }
+                    i = i + 1;
+                }
+            } else {
+                throw new IllegalArgumentException("Argumento Inválido");
+            }
+        }
+        if (i != a.length + 1) {
+            throw new IllegalArgumentException("Argumento Inválido");
+        }
+    }
+
+    static void validaHorner(int... arguments) {
+        // TODO implementar esse algoritmo
+    }
+
+    //endregion
 }
