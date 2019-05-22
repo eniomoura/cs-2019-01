@@ -1,6 +1,6 @@
 package com.github.eniomoura.ufg.cs.aula01;
 
-class Algoritmos {
+final class Algoritmos {
     //region MÉTODO MAIN
     public static void main(final String[] args) {
     }
@@ -14,8 +14,10 @@ class Algoritmos {
     static final int QUATROCENTOS = 400;
     static final int CPF_LENGTH = 11;
     static final int MAX_DAYS_OF_MONTH = 31;
-    static final int MAX_MONTH = 12;
     static final int MIN_YEAR = 1753;
+
+    private Algoritmos() {
+    }
 
     static boolean propriedade3025(final int n) {
         if (n <= 0 || n > MAX_4_CASAS) {
@@ -319,10 +321,12 @@ class Algoritmos {
 
     static Boolean cpf(final int[] d) {
         if (d.length == CPF_LENGTH) {
-            final int j = d[0] + (2 * d[1]) + (3 * d[2]) + (4 * d[3]) +
-                    (5 * d[4]) + (6 * d[5]) + (7 * d[6]) + (8 * d[7]) + (9 * d[8]);
-            final int k = d[1] + (2 * d[2]) + (3 * d[3]) + (4 * d[4]) + (5 * d[5])
-                    + (6 * d[6]) + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
+            final int j = d[0] + (2 * d[1]) + (3 * d[2])
+                  + (4 * d[3]) + (5 * d[4]) + (6 * d[5])
+                  + (7 * d[6]) + (8 * d[7]) + (9 * d[8]);
+            final int k = d[1] + (2 * d[2]) + (3 * d[3])
+                  + (4 * d[4]) + (5 * d[5]) + (6 * d[6])
+                  + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
             final int dj = ((j % CPF_LENGTH) % 10);
             final int dk = ((k % CPF_LENGTH) % 10);
             return (dj == d[9] && dk == d[10]);
