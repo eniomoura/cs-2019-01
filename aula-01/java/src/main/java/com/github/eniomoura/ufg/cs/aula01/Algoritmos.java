@@ -1,36 +1,24 @@
 package com.github.eniomoura.ufg.cs.aula01;
 
-public class Algoritmos {
+class Algoritmos {
     //region MÉTODO MAIN
-    public static void main(String[] args) {
-//        System.out.println("propriedade3025: " + propriedade3025(3025));
-//        System.out.println("propriedade153: " + propriedade153(153));
-//        System.out.println("diaDaSemana: " + diaDaSemana(11, 4, 2019));
-//        System.out.println("mod: " + mod(5, 3));
-//        System.out.println("somaNaturais: " + somaNaturais(3));
-//        System.out.println("fatorial: " + fatorial(3));
-//        System.out.println("produto: " + produto(4, 3));
-//        System.out.println("potencia: " + potencia(3, 3));
-//        System.out.println("pi: " + pi(1000000));
-//        System.out.println("logaritmoNatural: " + logaritmoNatural(3, 3));
-//        System.out.println("razaoAurea: " + razaoAurea(3, 4, 3));
-//        System.out.println("quadradoPerfeito: " + quadradoPerfeito(9));
-//        System.out.println("raiz: " + raiz(9, 3));
-//        System.out.println("primo: " + primo(3));
-//        System.out.println("crivoErastotenes: " + Arrays.toString(crivoErastotenes(new int[]{2, 3}, 2)));
-//        System.out.println("mdc: " + mdc(81, 54));
-//        System.out.println("mdc2: " + mdc2(81, 54));
-//        System.out.println("horner: " + horner(3, 2, 5, 6, 7));
-//        System.out.println("fibonacci: " + fibonacci(3));
-//        System.out.println("cpf: " + cpf(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
-//        System.out.println("cpf2: " + cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
+    public static void main(final String[] args) {
     }
     //endregion
 
     //region Algoritmos
 
+    static final int MAX_4_CASAS = 9999;
+    static final int MAX_3_CASAS = 999;
+    static final int DEZEMBRO = 12;
+    static final int QUATROCENTOS = 400;
+    static final int CPF_LENGTH = 11;
+    static final int MAX_DAYS_OF_MONTH = 31;
+    static final int MAX_MONTH = 12;
+    static final int MIN_YEAR = 1753;
+
     static boolean propriedade3025(final int n) {
-        if (n <= 0 || n > 9999) {
+        if (n <= 0 || n > MAX_4_CASAS) {
             throw new IllegalArgumentException("Argumento Inválido");
         }
 
@@ -39,30 +27,30 @@ public class Algoritmos {
         return ((i + j) * (i + j) == n);
     }
 
-    static Boolean propriedade153(int cdu) {
-        if (100 <= cdu && cdu <= 999) {
-            int c = cdu / 100;
-            int du = cdu % 100;
-            int d = du / 10;
-            int u = du % 10;
+    static Boolean propriedade153(final int cdu) {
+        if (100 <= cdu && cdu <= MAX_3_CASAS) {
+            final int c = cdu / 100;
+            final int du = cdu % 100;
+            final int d = du / 10;
+            final int u = du % 10;
             return ((c * c * c) + (d * d * d) + (u * u * u) == cdu);
         } else {
             throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
-    static int diaDaSemana(int d, int m, int a) {
+    static int diaDaSemana(final int d, int m, int a) {
         validaDiaDaSemana(d, m, a);
         if (m == 1 || m == 2) {
-            m = m + 12;
+            m = m + DEZEMBRO;
             a = a - 1;
         }
-        int s = d + (2 * m) + ((3 * (m + 1)) / 5) +
-                a + (a / 4) - (a / 100) + (a / 400);
+        final int s = d + (2 * m) + ((3 * (m + 1)) / 5) +
+                a + (a / 4) - (a / 100) + (a / QUATROCENTOS);
         return s % 7;
     }
 
-    static int mod(int x, int y) {
+    static int mod(final int x, final int y) {
         if (0 <= y && 0 < x) {
             int s = x;
             while (y <= s) {
@@ -74,7 +62,7 @@ public class Algoritmos {
         }
     }
 
-    static int somaNaturais(int n) {
+    static int somaNaturais(final int n) {
         if (0 <= n) {
             int i = 2;
             int s = 1;
@@ -88,7 +76,7 @@ public class Algoritmos {
         }
     }
 
-    static int fatorial(int n) {
+    static int fatorial(final int n) {
         if (1 <= n) {
             int i = 2;
             int f = 1;
@@ -102,7 +90,7 @@ public class Algoritmos {
         }
     }
 
-    static int produto(int a, int b) {
+    static int produto(final int a, final int b) {
         if (0 <= a && 0 <= b) {
             int totalParcelas = a;
             int parcela = b;
@@ -122,7 +110,7 @@ public class Algoritmos {
         }
     }
 
-    static int potencia(int x, int y) {
+    static int potencia(final int x, final int y) {
         if (0 < x && 0 <= y) {
             int potencia = 1;
             int i = 1;
@@ -136,7 +124,7 @@ public class Algoritmos {
         }
     }
 
-    static double pi(int n) {
+    static double pi(final int n) {
         if (1 <= n) {
             double i = 1;
             double s = -1;
@@ -154,7 +142,7 @@ public class Algoritmos {
         }
     }
 
-    static double logaritmoNatural(int n, int k) {
+    static double logaritmoNatural(final int n, final int k) {
         if (1 <= n && 2 <= k) {
             double i = 2;
             double e = 1 + n;
@@ -172,7 +160,7 @@ public class Algoritmos {
         }
     }
 
-    static double razaoAurea(int x, int y, int k) {
+    static double razaoAurea(final int x, final int y, final int k) {
         if (0 <= x && x < y && 0 < k) {
             double c = y;
             double a = x;
@@ -190,7 +178,7 @@ public class Algoritmos {
         }
     }
 
-    static Boolean quadradoPerfeito(int n) {
+    static Boolean quadradoPerfeito(final int n) {
         if (1 < n) {
             int i = 1;
             int s = 1;
@@ -204,7 +192,7 @@ public class Algoritmos {
         }
     }
 
-    static double raiz(int n, int i) {
+    static double raiz(final int n, int i) {
         if (0 < n) {
             double r = 1;
             while (0 <= i) {
@@ -217,7 +205,7 @@ public class Algoritmos {
         }
     }
 
-    static Boolean primo(int n) {
+    static Boolean primo(final int n) {
         if (n > 1) {
             int i = 2;
             while (i < n) {
@@ -232,13 +220,13 @@ public class Algoritmos {
         }
     }
 
-    static int[] crivoErastotenes(int[] a, int n) {
+    static int[] crivoErastotenes(final int[] a, final int n) {
         int i;
         int multiplo;
         for (i = 0; i < a.length; i++) {
             if (n > 1 && !(i > 2 && i > n) || a[i] == 0) {
                 i = 2;
-                double limite = Math.abs(Math.sqrt(n));
+                final double limite = Math.abs(Math.sqrt(n));
                 while (i <= limite) {
                     if (a[i] == 0) {
                         multiplo = i + 1;
@@ -263,7 +251,7 @@ public class Algoritmos {
     static int mdc(int a, int b) {
         if (b < a && 0 < b) {
             while (b != 0) {
-                int m = a % b;
+                final int m = a % b;
                 a = b;
                 b = m;
             }
@@ -288,7 +276,7 @@ public class Algoritmos {
         }
     }
 
-    static int horner(int... arguments) {
+    static int horner(final int... arguments) {
         // TODO verificar se argumentos fornecidos conforme exigência
         int p,
                 i;
@@ -305,7 +293,7 @@ public class Algoritmos {
         }
     }
 
-    static int fibonacci(int n) {
+    static int fibonacci(final int n) {
         int a,
                 c,
                 t,
@@ -329,25 +317,27 @@ public class Algoritmos {
         }
     }
 
-    static Boolean cpf(int[] d) {
-        if (d.length == 11) {
-            int j = d[0] + (2 * d[1]) + (3 * d[2]) + (4 * d[3]) + (5 * d[4]) + (6 * d[5]) + (7 * d[6]) + (8 * d[7]) + (9 * d[8]);
-            int k = d[1] + (2 * d[2]) + (3 * d[3]) + (4 * d[4]) + (5 * d[5]) + (6 * d[6]) + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
-            int dj = ((j % 11) % 10);
-            int dk = ((k % 11) % 10);
+    static Boolean cpf(final int[] d) {
+        if (d.length == CPF_LENGTH) {
+            final int j = d[0] + (2 * d[1]) + (3 * d[2]) + (4 * d[3]) +
+                    (5 * d[4]) + (6 * d[5]) + (7 * d[6]) + (8 * d[7]) + (9 * d[8]);
+            final int k = d[1] + (2 * d[2]) + (3 * d[3]) + (4 * d[4]) + (5 * d[5])
+                    + (6 * d[6]) + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
+            final int dj = ((j % CPF_LENGTH) % 10);
+            final int dk = ((k % CPF_LENGTH) % 10);
             return (dj == d[9] && dk == d[10]);
         } else {
             throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
-    static Boolean cpf2(int[] d) {
-        int c,
-                p,
-                s,
-                j,
-                k;
-        if (d.length == 11) {
+    static Boolean cpf2(final int[] d) {
+        int c;
+        int p;
+        int s;
+        final int j;
+        final int k;
+        if (d.length == CPF_LENGTH) {
             c = 8;
             p = d[8];
             s = d[8];
@@ -356,8 +346,8 @@ public class Algoritmos {
                 s += p;
                 c -= 1;
             }
-            j = ((s % 11) % 10);
-            k = ((s - p + 9 * d[9]) % 11) % 10;
+            j = ((s % CPF_LENGTH) % 10);
+            k = ((s - p + 9 * d[9]) % CPF_LENGTH) % 10;
             return (j == d[9] && k == d[10]);
         } else {
             throw new IllegalArgumentException("Argumento Inválido");
@@ -367,29 +357,29 @@ public class Algoritmos {
 
     //region Validações
 
-    static void validaDiaDaSemana(int d, int m, int a) {
-        if (d < 1 || d > 31) {
-            if (m < 1 || m > 12) {
-                if (a < 1753) {
+    static void validaDiaDaSemana(final int d, final int m, final int a) {
+        if (d < 1 || d > MAX_DAYS_OF_MONTH) {
+            if (m < 1 || m > DEZEMBRO) {
+                if (a < MIN_YEAR) {
                     throw new IllegalArgumentException("Argumento Inválido");
                 }
             }
         }
     }
 
-    static void validaRazaoAurea(int x, int y, int k) {
+    static void validaRazaoAurea(final int x, final int y, final int k) {
         if (0 <= x && x < y && 0 < k) {
             throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
-    static void validaCrivo(int[] a, int n) {
+    static void validaCrivo(final int[] a, final int n) {
         int i;
         int multiplo;
         for (i = 0; i < a.length; i++) {
             if (n > 1 && !(i > 2 && i > n) || a[i] == 0) {
                 i = 2;
-                double limite = Math.abs(Math.sqrt(n));
+                final double limite = Math.abs(Math.sqrt(n));
                 while (i <= limite) {
                     if (a[i] == 0) {
                         multiplo = i + 1;
@@ -409,9 +399,10 @@ public class Algoritmos {
         }
     }
 
-    static void validaHorner(int... arguments) {
+    static void validaHorner(final int... arguments) {
         // TODO implementar esse algoritmo
     }
 
     //endregion
+
 }
