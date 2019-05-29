@@ -2,23 +2,41 @@ package com.github.eniomoura.ufg.cs.aula01;
 
 final class Algoritmos {
     //region MÉTODO MAIN
+    /** Ponto de entrada do programa.
+     *  @param args : parâmetros de CLI*/
     public static void main(final String[] args) {
     }
     //endregion
 
     //region Algoritmos
 
+    /** constante definindo maior numero de 4 casas. */
     static final int MAX_4_CASAS = 9999;
+    /** constante definindo maior numero de 3 casas. */
     static final int MAX_3_CASAS = 999;
+    /** constante definindo numero do mes de dezembro. */
     static final int DEZEMBRO = 12;
-    static final int QUATROCENTOS = 400;
+    /** constante definindo o tamanho de um CPF. */
     static final int CPF_LENGTH = 11;
+    /** constante definindo o numero maximo de dias em um mes. */
     static final int MAX_DAYS_OF_MONTH = 31;
+    /** constante definindo o ano minimo valido para o programa. */
     static final int MIN_YEAR = 1753;
 
+    //NUMEROS
+    /** constante definindo o numero 400. */
+    static final int QUATROCENTOS = 400;
+    /** constante definindo o numero 100. */
+    static final int CEM = 100;
+    //FIM NUMEROS
+
+    /** construtor private explicitando classe utilitaria. */
     private Algoritmos() {
     }
 
+    /** algoritmo 1 da lista.
+     * @param n numero para checar a propriedade
+     * @return propriedade falsa ou verdadeira*/
     static boolean propriedade3025(final int n) {
         if (n <= 0 || n > MAX_4_CASAS) {
             throw new IllegalArgumentException("Argumento Inválido");
@@ -29,8 +47,11 @@ final class Algoritmos {
         return ((i + j) * (i + j) == n);
     }
 
-    static Boolean propriedade153(final int cdu) {
-        if (100 <= cdu && cdu <= MAX_3_CASAS) {
+    /** algoritmo 2 da lista.
+     * @param cdu numero para checar a propriedade
+     * @return propriedade falsa ou verdadeira*/
+    static boolean propriedade153(final int cdu) {
+        if (CEM <= cdu && cdu <= MAX_3_CASAS) {
             final int c = cdu / 100;
             final int du = cdu % 100;
             final int d = du / 10;
@@ -41,17 +62,28 @@ final class Algoritmos {
         }
     }
 
-    static int diaDaSemana(final int d, int m, int a) {
+    /** algoritmo 3 da lista.
+     * @param d dia do mes (1...31)
+     * @param m mes (1...12)
+     * @param a ano (MIN_YEAR...MAX_YEAR)
+     * @return dia da semana (1...7)*/
+    static int diaDaSemana(final int d, final int m, final int a) {
         validaDiaDaSemana(d, m, a);
-        if (m == 1 || m == 2) {
-            m = m + DEZEMBRO;
-            a = a - 1;
+        int localM = m;
+        int localA = a;
+        if (localM == 1 || localM == 2) {
+            localM = localM + DEZEMBRO;
+            localA = localA - 1;
         }
-        final int s = d + (2 * m) + ((3 * (m + 1)) / 5) +
-                a + (a / 4) - (a / 100) + (a / QUATROCENTOS);
+        final int s = d + (2 * localM) + ((3 * (localM + 1)) / 5)
+                + localA + (localA / 4) - (localA / 100) + (localA / QUATROCENTOS);
         return s % 7;
     }
 
+    /** algoritmo 4 da lista.
+     * @param x numero a ser processado
+     * @param y limite para ser truncado o modulo
+     * @return valor limitado pelo modulo*/
     static int mod(final int x, final int y) {
         if (0 <= y && 0 < x) {
             int s = x;
@@ -64,6 +96,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 5 da lista.
+     * @param n quantos numeros devem ser somados
+     * @return resultado da soma*/
     static int somaNaturais(final int n) {
         if (0 <= n) {
             int i = 2;
@@ -78,6 +113,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 6 da lista.
+     * @param n numero a ser levado a fatorial
+     * @return resultado da fatorial*/
     static int fatorial(final int n) {
         if (1 <= n) {
             int i = 2;
@@ -92,6 +130,10 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 7 da lista.
+     * @param a primeiro operando do produto
+     * @param b segundo operando do produto
+     * @return produto de a e b */
     static int produto(final int a, final int b) {
         if (0 <= a && 0 <= b) {
             int totalParcelas = a;
@@ -112,6 +154,10 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 8 da lista.
+     * @param x primeiro operando da potencia
+     * @param y segundo operando da potencia
+     * @return a elevado na b potencia */
     static int potencia(final int x, final int y) {
         if (0 < x && 0 <= y) {
             int potencia = 1;
@@ -126,6 +172,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 9 da lista.
+     * @param n coeficiente de precisao do calculo
+     * @return aproximacao de pi */
     static double pi(final int n) {
         if (1 <= n) {
             double i = 1;
@@ -144,6 +193,10 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 10 da lista.
+     * @param n valor a ser aplicado o ln
+     * @param k coeficiente de precisao do calculo
+     * @return aproximacao do ln(n) */
     static double logaritmoNatural(final int n, final int k) {
         if (1 <= n && 2 <= k) {
             double i = 2;
@@ -162,6 +215,11 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 11 da lista.
+     * @param x primeiro operando inteiro positivo
+     * @param y segundo operando inteiro positivo
+     * @param k terceiro operando inteiro positivo
+     * @return aproximacao da razao aurea baseada em x, y e k */
     static double razaoAurea(final int x, final int y, final int k) {
         if (0 <= x && x < y && 0 < k) {
             double c = y;
@@ -180,6 +238,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 12 da lista.
+     * @param n numero a verificar a propriedade
+     * @return retorna verdadeiro se a propriedade e verificada */
     static Boolean quadradoPerfeito(final int n) {
         if (1 < n) {
             int i = 1;
@@ -194,12 +255,17 @@ final class Algoritmos {
         }
     }
 
-    static double raiz(final int n, int i) {
+    /** algoritmo 13 da lista.
+     * @param n primeiro operando da radiciacao
+     * @param i segundo operando da radiciacao
+     * @return raiz i-esima de n */
+    static double raiz(final int n, final int i) {
+        int localI = i;
         if (0 < n) {
             double r = 1;
-            while (0 <= i) {
+            while (0 <= localI) {
                 r = (r + n / r) / 2;
-                i = i - 1;
+                localI = localI - 1;
             }
             return r;
         } else {
@@ -207,6 +273,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 14 da lista.
+     * @param n numero a verificar a propriedade
+     * @return retorna verdadeiro se a propriedade e verificada */
     static Boolean primo(final int n) {
         if (n > 1) {
             int i = 2;
@@ -222,6 +291,10 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 15 da lista.
+     * @param a vetor a calcular o crivo
+     * @param n valor a usar como argumento para o crivo
+     * @return retorna o vetor com os numeros primos */
     static int[] crivoErastotenes(final int[] a, final int n) {
         int i;
         int multiplo;
@@ -250,34 +323,49 @@ final class Algoritmos {
         }
     }
 
-    static int mdc(int a, int b) {
-        if (b < a && 0 < b) {
-            while (b != 0) {
-                final int m = a % b;
-                a = b;
-                b = m;
+    /** algoritmo 16 da lista.
+     * @param a primeiro operando do mdc
+     * @param b segundo operando do mdc
+     * @return retorna o minimo divisor comum entre a e b */
+    static int mdc(final int a, final int b) {
+        int localA = a;
+        int localB = b;
+        if (localB < localA && 0 < localB) {
+            while (localB != 0) {
+                final int m = localA % localB;
+                localA = localB;
+                localB = m;
             }
-            return a;
+            return localA;
         } else {
             throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
-    static int mdc2(int a, int b) {
-        if (b < a && 0 < b) {
-            while (a != b) {
-                if (a > b) {
-                    a = a - b;
+    /** algoritmo 17 da lista.
+     * @param a primeiro operando do mdc
+     * @param b segundo operando do mdc
+     * @return retorna o minimo divisor comum entre a e b */
+    static int mdc2(final int a, final int b) {
+        int localA = a;
+        int localB = b;
+        if (localB < a && 0 < localB) {
+            while (localA != localB) {
+                if (localA > localB) {
+                    localA = localA - localB;
                 } else {
-                    b = b - a;
+                    localB = localB - localA;
                 }
             }
-            return a;
+            return localA;
         } else {
             throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
+    /** algoritmo 18 da lista.
+     * @param arguments coeficientes do polinomio avaliado
+     * @return resultado do somatorio de horner */
     static int horner(final int... arguments) {
         // TODO verificar se argumentos fornecidos conforme exigência
         int p,
@@ -295,6 +383,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 19 da lista.
+     * @param n numero de iteracoes da soma de fibonacci
+     * @return n-esimo valor de fibonacci na sequencia */
     static int fibonacci(final int n) {
         int a,
                 c,
@@ -319,6 +410,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 20 da lista.
+     * @param d vetor contendo os numeros do cpf a ser validado
+     * @return retorna true se o cpf e valido */
     static Boolean cpf(final int[] d) {
         if (d.length == CPF_LENGTH) {
             final int j = d[0] + (2 * d[1]) + (3 * d[2])
