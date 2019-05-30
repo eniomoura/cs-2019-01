@@ -20,15 +20,10 @@ final class Algoritmos {
     static final int CPF_LENGTH = 11;
     /** constante definindo o numero maximo de dias em um mes. */
     static final int MAX_DAYS_OF_MONTH = 31;
+    /** constante definindo o numero maximo de dias em um mes. */
+    static final int MAX_DAYS_OF_WEEK = 7;
     /** constante definindo o ano minimo valido para o programa. */
     static final int MIN_YEAR = 1753;
-
-    //NUMEROS
-    /** constante definindo o numero 400. */
-    static final int QUATROCENTOS = 400;
-    /** constante definindo o numero 100. */
-    static final int CEM = 100;
-    //FIM NUMEROS
 
     /** construtor private explicitando classe utilitaria. */
     private Algoritmos() {
@@ -51,7 +46,7 @@ final class Algoritmos {
      * @param cdu numero para checar a propriedade
      * @return propriedade falsa ou verdadeira*/
     static boolean propriedade153(final int cdu) {
-        if (CEM <= cdu && cdu <= MAX_3_CASAS) {
+        if (100 <= cdu && cdu <= MAX_3_CASAS) {
             final int c = cdu / 100;
             final int du = cdu % 100;
             final int d = du / 10;
@@ -76,8 +71,8 @@ final class Algoritmos {
             localA = localA - 1;
         }
         final int s = d + (2 * localM) + ((3 * (localM + 1)) / 5)
-                + localA + (localA / 4) - (localA / 100) + (localA / QUATROCENTOS);
-        return s % 7;
+                + localA + (localA / 4) - (localA / 100) + (localA / 400);
+        return s % MAX_DAYS_OF_WEEK;
     }
 
     /** algoritmo 4 da lista.
@@ -429,6 +424,9 @@ final class Algoritmos {
         }
     }
 
+    /** algoritmo 21 da lista.
+     * @param d vetor contendo os numeros do cpf a ser validado
+     * @return retorna true se o cpf e valido */
     static Boolean cpf2(final int[] d) {
         int c;
         int p;
@@ -454,7 +452,10 @@ final class Algoritmos {
     //endregion
 
     //region Validações
-
+    /** joga uma IllegalArgumentException se a data informada for invalida.
+     * @param d dia do mes
+     * @param m mes (1...12)
+     * @param a ano (MIN_YEAR...MAX_YEAR)*/
     static void validaDiaDaSemana(final int d, final int m, final int a) {
         if (d < 1 || d > MAX_DAYS_OF_MONTH) {
             if (m < 1 || m > DEZEMBRO) {
@@ -465,12 +466,19 @@ final class Algoritmos {
         }
     }
 
+    /** verifica se a entrada da razao aurea e valida.
+     * @param x primeiro operando inteiro positivo
+     * @param y segundo operando inteiro positivo
+     * @param k terceiro operando inteiro positivo */
     static void validaRazaoAurea(final int x, final int y, final int k) {
         if (0 <= x && x < y && 0 < k) {
             throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
+    /** verifica se a entrada do crivo de erastotenes e valido.
+     * @param a vetor a calcular o crivo
+     * @param n valor a usar como argumento para o crivo*/
     static void validaCrivo(final int[] a, final int n) {
         int i;
         int multiplo;
@@ -497,6 +505,8 @@ final class Algoritmos {
         }
     }
 
+    /** verifica se a entrada do polinmio de horner e valida.
+     * @param arguments coeficientes do polinomio avaliado*/
     static void validaHorner(final int... arguments) {
         // TODO implementar esse algoritmo
     }
