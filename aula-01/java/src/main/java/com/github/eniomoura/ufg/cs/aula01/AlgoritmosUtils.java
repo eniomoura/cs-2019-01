@@ -1,15 +1,14 @@
+/**
+ *
+ *
+ * @author Enio Moura
+ */
+
 package com.github.eniomoura.ufg.cs.aula01;
 
-final class Algoritmos {
-    //region MÉTODO MAIN
-    /** Ponto de entrada do programa.
-     *  @param args : parâmetros de CLI*/
-    public static void main(final String[] args) {
-    }
-    //endregion
+final class AlgoritmosUtils {
 
-    //region Algoritmos
-
+    //region CONSTANTES
     /** constante definindo maior numero de 4 casas. */
     static final int MAX_4_CASAS = 9999;
     /** constante definindo maior numero de 3 casas. */
@@ -24,9 +23,21 @@ final class Algoritmos {
     static final int MAX_DAYS_OF_WEEK = 7;
     /** constante definindo o ano minimo valido para o programa. */
     static final int MIN_YEAR = 1753;
+    /** mensagem de erro para argumentos invalidos. */
+    static final String ILLEGAL_ARG_MSG = "Argumento Inválido";
+    //endregion
+
+    //region MÉTODO MAIN
+    /** Ponto de entrada do programa.
+     *  @param args : parâmetros de CLI*/
+    public static void main(final String[] args) {
+    }
+    //endregion
+
+    //region AlgoritmosUtils
 
     /** construtor private explicitando classe utilitaria. */
-    private Algoritmos() {
+    private AlgoritmosUtils() {
     }
 
     /** algoritmo 1 da lista.
@@ -34,12 +45,12 @@ final class Algoritmos {
      * @return propriedade falsa ou verdadeira*/
     static boolean propriedade3025(final int n) {
         if (n <= 0 || n > MAX_4_CASAS) {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
 
         final int i = n / 100;
         final int j = n % 100;
-        return ((i + j) * (i + j) == n);
+        return (i + j) * (i + j) == n;
     }
 
     /** algoritmo 2 da lista.
@@ -51,9 +62,9 @@ final class Algoritmos {
             final int du = cdu % 100;
             final int d = du / 10;
             final int u = du % 10;
-            return ((c * c * c) + (d * d * d) + (u * u * u) == cdu);
+            return (c * c * c) + (d * d * d) + (u * u * u) == cdu;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -87,7 +98,7 @@ final class Algoritmos {
             }
             return s;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -104,7 +115,7 @@ final class Algoritmos {
             }
             return s;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -112,7 +123,8 @@ final class Algoritmos {
      * @param n numero a ser levado a fatorial
      * @return resultado da fatorial*/
     static int fatorial(final int n) {
-        if (1 <= n) {
+        final boolean validInput = 1 <= n;
+        if (validInput) {
             int i = 2;
             int f = 1;
             while (i <= n) {
@@ -121,7 +133,7 @@ final class Algoritmos {
             }
             return f;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -145,7 +157,7 @@ final class Algoritmos {
             }
             return s;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -163,7 +175,7 @@ final class Algoritmos {
             }
             return potencia;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -171,7 +183,8 @@ final class Algoritmos {
      * @param n coeficiente de precisao do calculo
      * @return aproximacao de pi */
     static double pi(final int n) {
-        if (1 <= n) {
+        final boolean validInput = 1 <= n;
+        if (validInput) {
             double i = 1;
             double s = -1;
             double d = -1;
@@ -184,7 +197,7 @@ final class Algoritmos {
             }
             return p;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -206,7 +219,7 @@ final class Algoritmos {
             }
             return e;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -216,28 +229,26 @@ final class Algoritmos {
      * @param k terceiro operando inteiro positivo
      * @return aproximacao da razao aurea baseada em x, y e k */
     static double razaoAurea(final int x, final int y, final int k) {
-        if (0 <= x && x < y && 0 < k) {
-            double c = y;
-            double a = x;
-            double i = 1;
-            double t;
-            while (i <= k) {
-                t = c;
-                c = c + a;
-                a = t;
-                i = i + 1;
-            }
-            return c / a;
-        } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+        validaRazaoAurea(x, y, k);
+        double c = y;
+        double a = x;
+        double i = 1;
+        double t;
+        while (i <= k) {
+            t = c;
+            c = c + a;
+            a = t;
+            i = i + 1;
         }
+        return c / a;
     }
 
     /** algoritmo 12 da lista.
      * @param n numero a verificar a propriedade
      * @return retorna verdadeiro se a propriedade e verificada */
     static Boolean quadradoPerfeito(final int n) {
-        if (1 < n) {
+        final boolean validInput = 1 < n;
+        if (validInput) {
             int i = 1;
             int s = 1;
             while (s < n) {
@@ -246,7 +257,7 @@ final class Algoritmos {
             }
             return s == n;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -264,7 +275,7 @@ final class Algoritmos {
             }
             return r;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -272,7 +283,8 @@ final class Algoritmos {
      * @param n numero a verificar a propriedade
      * @return retorna verdadeiro se a propriedade e verificada */
     static Boolean primo(final int n) {
-        if (n > 1) {
+        final boolean validInput = n > 1;
+        if (validInput) {
             int i = 2;
             while (i < n) {
                 if (n % i == 0) {
@@ -282,7 +294,7 @@ final class Algoritmos {
             }
             return true;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -291,31 +303,24 @@ final class Algoritmos {
      * @param n valor a usar como argumento para o crivo
      * @return retorna o vetor com os numeros primos */
     static int[] crivoErastotenes(final int[] a, final int n) {
+        validaCrivo(a, n);
         int i;
         int multiplo;
         for (i = 0; i < a.length; i++) {
-            if (n > 1 && !(i > 2 && i > n) || a[i] == 0) {
-                i = 2;
-                final double limite = Math.abs(Math.sqrt(n));
-                while (i <= limite) {
-                    if (a[i] == 0) {
-                        multiplo = i + 1;
-                        while (multiplo <= n) {
-                            a[multiplo] = 1;
-                            multiplo = multiplo + 1;
-                        }
+            i = 2;
+            final double limite = Math.abs(Math.sqrt(n));
+            while (i <= limite) {
+                if (a[i] == 0) {
+                    multiplo = i + 1;
+                    while (multiplo <= n) {
+                        a[multiplo] = 1;
+                        multiplo = multiplo + 1;
                     }
-                    i = i + 1;
                 }
-            } else {
-                throw new IllegalArgumentException("Argumento Inválido");
+                i = i + 1;
             }
         }
-        if (i == a.length + 1) {
-            return a;
-        } else {
-            throw new IllegalArgumentException("Argumento Inválido");
-        }
+        return a;
     }
 
     /** algoritmo 16 da lista.
@@ -333,7 +338,7 @@ final class Algoritmos {
             }
             return localA;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -354,7 +359,7 @@ final class Algoritmos {
             }
             return localA;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -364,8 +369,9 @@ final class Algoritmos {
     static int horner(final int... arguments) {
         // TODO verificar se argumentos fornecidos conforme exigência
         int p,
-                i;
-        if (1 <= arguments[1]) {
+            i;
+        final boolean validaInput = 1 <= arguments[1];
+        if (validaInput) {
             p = arguments[3];
             i = arguments[1] - 1;
             while (0 <= i) {
@@ -374,7 +380,7 @@ final class Algoritmos {
             }
             return p;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -401,7 +407,7 @@ final class Algoritmos {
             }
             return c;
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -416,11 +422,11 @@ final class Algoritmos {
             final int k = d[1] + (2 * d[2]) + (3 * d[3])
                   + (4 * d[4]) + (5 * d[5]) + (6 * d[6])
                   + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
-            final int dj = ((j % CPF_LENGTH) % 10);
-            final int dk = ((k % CPF_LENGTH) % 10);
-            return (dj == d[9] && dk == d[10]);
+            final int dj = (j % CPF_LENGTH) % 10;
+            final int dk = (k % CPF_LENGTH) % 10;
+            return dj == d[9] && dk == d[10];
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -442,11 +448,11 @@ final class Algoritmos {
                 s += p;
                 c -= 1;
             }
-            j = ((s % CPF_LENGTH) % 10);
+            j = (s % CPF_LENGTH) % 10;
             k = ((s - p + 9 * d[9]) % CPF_LENGTH) % 10;
-            return (j == d[9] && k == d[10]);
+            return j == d[9] && k == d[10];
         } else {
-            throw new IllegalArgumentException("Argumento Inválido");
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
     //endregion
@@ -457,12 +463,8 @@ final class Algoritmos {
      * @param m mes (1...12)
      * @param a ano (MIN_YEAR...MAX_YEAR)*/
     static void validaDiaDaSemana(final int d, final int m, final int a) {
-        if (d < 1 || d > MAX_DAYS_OF_MONTH) {
-            if (m < 1 || m > DEZEMBRO) {
-                if (a < MIN_YEAR) {
-                    throw new IllegalArgumentException("Argumento Inválido");
-                }
-            }
+        if (d < 1 || d > MAX_DAYS_OF_MONTH && (m < 1 || m > DEZEMBRO && a < MIN_YEAR)) {
+                    throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -471,8 +473,8 @@ final class Algoritmos {
      * @param y segundo operando inteiro positivo
      * @param k terceiro operando inteiro positivo */
     static void validaRazaoAurea(final int x, final int y, final int k) {
-        if (0 <= x && x < y && 0 < k) {
-            throw new IllegalArgumentException("Argumento Inválido");
+        if (!(0 <= x && x < y && 0 < k)) {
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 
@@ -480,35 +482,17 @@ final class Algoritmos {
      * @param a vetor a calcular o crivo
      * @param n valor a usar como argumento para o crivo*/
     static void validaCrivo(final int[] a, final int n) {
-        int i;
-        int multiplo;
-        for (i = 0; i < a.length; i++) {
-            if (n > 1 && !(i > 2 && i > n) || a[i] == 0) {
-                i = 2;
-                final double limite = Math.abs(Math.sqrt(n));
-                while (i <= limite) {
-                    if (a[i] == 0) {
-                        multiplo = i + 1;
-                        while (multiplo <= n) {
-                            a[multiplo] = 1;
-                            multiplo = multiplo + 1;
-                        }
-                    }
-                    i = i + 1;
-                }
-            } else {
-                throw new IllegalArgumentException("Argumento Inválido");
+        for (int i = 0; i < a.length; i++) {
+            if (!(n > 1 && !(i > 2 && i > n) || a[i] == 0)) {
+                throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
             }
-        }
-        if (i != a.length + 1) {
-            throw new IllegalArgumentException("Argumento Inválido");
         }
     }
 
     /** verifica se a entrada do polinmio de horner e valida.
      * @param arguments coeficientes do polinomio avaliado*/
     static void validaHorner(final int... arguments) {
-        // TODO implementar esse algoritmo
+        //TODO implementar esse algoritmo
     }
 
     //endregion
