@@ -1,39 +1,3 @@
-//MÉTODOS ESSENCIAIS
-var view = ''
-
-function getView() {
-    try {
-        addToView('propriedade3025', propriedade3025(3025))
-        addToView('propriedade153', propriedade153(153))
-        addToView('diaDaSemana', diaDaSemana(11, 4, 2019))
-        addToView('mod', mod(5, 3))
-        addToView('somaNaturais', somaNaturais(3))
-        addToView('fatorial', fatorial(3))
-        addToView('produto', produto(4, 3))
-        addToView('potencia', potencia(3, 3))
-        addToView('pi', pi(1000000))
-        addToView('logaritmoNatural', logaritmoNatural(3, 3))
-        addToView('razaoAurea', razaoAurea(3, 4, 3))
-        addToView('quadradoPerfeito', quadradoPerfeito(9))
-        addToView('raiz', raiz(9, 3))
-        addToView('primo', primo(3))
-        addToView('crivoErastotenes', crivoErastotenes([2, 3], 2))
-        addToView('mdc', mdc(81, 54))
-        addToView('mdc2', mdc2(81, 54))
-        addToView('horner', horner(3, 2, 5, 6, 7))
-        addToView('fibonacci', fibonacci(3))
-        addToView('cpf', cpf([9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3]))
-        addToView('cpf2', cpf2([9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3]))
-    } catch (e) {
-        console.error(e);
-    }
-    return view
-}
-
-function addToView(name, value) {
-    view += '<br><br>' + name + ':\t' + value
-}
-
 function propriedade3025(n) {
     if (0 < n && n < 9999) {
         const i = Math.floor(n / 100);
