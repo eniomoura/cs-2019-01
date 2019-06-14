@@ -1,10 +1,10 @@
 function propriedade3025(n) {
-    if (0 < n && n < 9999) {
+    if (0 < n && n < 9999 && Number.isInteger(n)) {
         const i = Math.floor(n / 100);
         const j = Math.floor(n % 100);
         return (i + j) * (i + j) == n;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Argumento Inválido");
     }
 }
 
@@ -339,3 +339,27 @@ function cpf2(d) {
         throw new Error("Argumento Inválido");
     }
 }
+
+module.exports = {
+    propriedade3025,
+    cpf,
+    cpf2,
+    crivoErastotenes,
+    diaDaSemana,
+    fatorial,
+    fibonacci,
+    horner,
+    logaritmoNatural,
+    mdc,
+    mdc2,
+    mod,
+    pi,
+    potencia,
+    primo,
+    produto,
+    propriedade153,
+    quadradoPerfeito,
+    raiz,
+    razaoAurea,
+    somaNaturais
+};
