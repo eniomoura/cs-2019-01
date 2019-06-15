@@ -367,6 +367,7 @@ final class AlgoritmosUtils {
      * @param arguments coeficientes do polinomio avaliado
      * @return resultado do somatorio de horner */
     static int horner(final int... arguments) {
+        // TODO verificar se argumentos fornecidos conforme exigência
         int p,
             i;
         final boolean validaInput = 1 <= arguments[1];
