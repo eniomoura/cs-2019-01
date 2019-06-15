@@ -1,3 +1,9 @@
+/**
+ * algoritmo 1 da lista.
+ *
+ * @param {number} n numero para checar a propriedade
+ * @returns propriedade falsa ou verdadeira
+ */
 function propriedade3025(n) {
     if (0 < n && n < 9999 && Number.isInteger(n)) {
         const i = Math.floor(n / 100);
@@ -8,6 +14,12 @@ function propriedade3025(n) {
     }
 }
 
+/**
+ *  algoritmo 2 da lista.
+ *
+ * @param {number} cdu numero para checar a propriedade
+ * @returns propriedade falsa ou verdadeira
+ */
 function propriedade153(cdu) {
     if (100 <= cdu && cdu <= 999) {
         let c = parseInt(cdu / 100);
@@ -20,6 +32,14 @@ function propriedade153(cdu) {
     }
 }
 
+/**
+ * algoritmo 3 da lista.
+ *
+ * @param {number} d dia do mes (1...31)
+ * @param {number} m mes (1...12)
+ * @param {number} a ano (MIN_YEAR...MAX_YEAR)
+ * @returns dia da semana (1...7)
+ */
 function diaDaSemana(d, m, a) {
     if (1 <= d && d <= 31 && 1 <= m && m <= 12 && a > 1753) {
         if (m == 1 || m == 2) {
@@ -33,6 +53,13 @@ function diaDaSemana(d, m, a) {
     }
 }
 
+/**
+ * algoritmo 4 da lista.
+ *
+ * @param {number} x numero a ser processado
+ * @param {number} y limite para ser truncado o modulo
+ * @returns valor limitado pelo modulo
+ */
 function mod(x, y) {
     if (0 <= y && 0 < x) {
         let s = x;
@@ -45,6 +72,12 @@ function mod(x, y) {
     }
 }
 
+/**
+ * algoritmo 5 da lista.
+ *
+ * @param {number} n quantos numeros devem ser somados
+ * @returns resultado da soma
+ */
 function somaNaturais(n) {
     if (0 <= n) {
         let i = 2;
@@ -60,6 +93,12 @@ function somaNaturais(n) {
     }
 }
 
+/**
+ * algoritmo 6 da lista.
+ *
+ * @param {number} n numero a ser levado a fatorial
+ * @returns resultado da fatorial
+ */
 function fatorial(n) {
     if (1 <= n) {
         let i = 2;
@@ -74,6 +113,13 @@ function fatorial(n) {
     }
 }
 
+/**
+ *  algoritmo 7 da lista.
+ *
+ * @param {number} a primeiro operando do produto
+ * @param {number} b segundo operando do produto
+ * @returns produto de a e b
+ */
 function produto(a, b) {
     if (0 <= a && 0 <= b) {
         let totalParcelas = a;
@@ -94,6 +140,13 @@ function produto(a, b) {
     }
 }
 
+/**
+ *  algoritmo 8 da lista.
+ *
+ * @param {number} x primeiro operando da potencia
+ * @param {number} y segundo operando da potencia
+ * @returns a elevado na b potencia
+ */
 function potencia(x, y) {
     if (0 < x && 0 <= y) {
         let potencia = 1;
@@ -108,6 +161,12 @@ function potencia(x, y) {
     }
 }
 
+/**
+ * algoritmo 9 da lista.
+ *
+ * @param {*} n coeficiente de precisao do calculo
+ * @returns aproximacao de pi
+ */
 function pi(n) {
     if (1 <= n) {
         let i = 1;
@@ -126,6 +185,13 @@ function pi(n) {
     }
 }
 
+/**
+ * algoritmo 10 da lista.
+ *
+ * @param {*} n valor a ser aplicado o ln
+ * @param {*} k coeficiente de precisao do calculo
+ * @returns aproximacao do ln(n)
+ */
 function logaritmoNatural(n, k) {
     if (1 <= n && 2 <= k) {
         let i = 2;
@@ -144,6 +210,14 @@ function logaritmoNatural(n, k) {
     }
 }
 
+/**
+ * algoritmo 11 da lista.
+ *
+ * @param {*} x primeiro operando inteiro positivo
+ * @param {*} y segundo operando inteiro positivo
+ * @param {*} k terceiro operando inteiro positivo
+ * @returns aproximacao da razao aurea baseada em x, y e k
+ */
 function razaoAurea(x, y, k) {
     if (0 <= x && x < y && 0 < k) {
         let c = y;
@@ -161,6 +235,12 @@ function razaoAurea(x, y, k) {
     }
 }
 
+/**
+ * algoritmo 12 da lista.
+ *
+ * @param {*} n numero a verificar a propriedade
+ * @returns retorna verdadeiro se a propriedade e verificada
+ */
 function quadradoPerfeito(n) {
     if (1 < n) {
         let i = 1;
@@ -175,6 +255,13 @@ function quadradoPerfeito(n) {
     }
 }
 
+/**
+ * algoritmo 13 da lista.
+ *
+ * @param {*} n primeiro operando da radiciacao
+ * @param {*} i segundo operando da radiciacao
+ * @returns raiz i-esima de n
+ */
 function raiz(n, i) {
     if (0 < n) {
         let r = 1;
@@ -188,6 +275,12 @@ function raiz(n, i) {
     }
 }
 
+/**
+ * algoritmo 14 da lista.
+ *
+ * @param {*} n numero a verificar a propriedade
+ * @returns retorna verdadeiro se a propriedade e verificada
+ */
 function primo(n) {
     if (n > 1) {
         let i = 2;
@@ -203,6 +296,13 @@ function primo(n) {
     }
 }
 
+/**
+ * algoritmo 15 da lista.
+ *
+ * @param {*} a vetor a calcular o crivo
+ * @param {*} n valor a usar como argumento para o crivo
+ * @returns retorna o vetor com os numeros primos
+ */
 function crivoErastotenes(a, n) {
     let i;
     for (i = 0; i < a.length; i++) {
@@ -230,6 +330,13 @@ function crivoErastotenes(a, n) {
     }
 }
 
+/**
+ * algoritmo 16 da lista.
+ *
+ * @param {*} a primeiro operando do mdc
+ * @param {*} b segundo operando do mdc
+ * @returns retorna o minimo divisor comum entre a e b
+ */
 function mdc(a, b) {
     if (b < a && 0 < b) {
         while (b != 0) {
@@ -243,6 +350,13 @@ function mdc(a, b) {
     }
 }
 
+/**
+ * algoritmo 17 da lista.
+ *
+ * @param {*} a primeiro operando do mdc
+ * @param {*} b segundo operando do mdc
+ * @returns retorna o minimo divisor comum entre a e b
+ */
 function mdc2(a, b) {
     if (b < a && 0 < b) {
         while (a != b) {
@@ -258,6 +372,11 @@ function mdc2(a, b) {
     }
 }
 
+/**
+ * algoritmo 18 da lista.
+ * @param {*} arguments coeficientes do polinomio avaliado
+ * @returns resultado do somatorio de horner
+ */
 function horner(/*x, g, ag, ag-1, ..., a0*/) {
     if (1 <= arguments[1]) {
         let p = arguments[3];
@@ -272,6 +391,12 @@ function horner(/*x, g, ag, ag-1, ..., a0*/) {
     }
 }
 
+/**
+ * algoritmo 19 da lista.
+ *
+ * @param {*} n numero de iteracoes da soma de fibonacci
+ * @returns n-esimo valor de fibonacci na sequencia
+ */
 function fibonacci(n) {
     if (0 <= n) {
         let a = 0;
@@ -292,6 +417,12 @@ function fibonacci(n) {
     }
 }
 
+/**
+ * algoritmo 20 da lista.
+ *
+ * @param {*} d vetor contendo os numeros do cpf a ser validado
+ * @returns retorna true se o cpf e valido
+ */
 function cpf(d) {
     if (d.length == 11) {
         let j =
@@ -322,6 +453,12 @@ function cpf(d) {
     }
 }
 
+/**
+ * algoritmo 21 da lista.
+ *
+ * @param {*} d vetor contendo os numeros do cpf a ser validado
+ * @returns retorna true se o cpf e valido
+ */
 function cpf2(d) {
     if (d.length == 11) {
         let c = 8;
