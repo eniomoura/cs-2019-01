@@ -5,6 +5,7 @@
  */
 
 package com.github.eniomoura.ufg.cs.aula01;
+import java.math.BigDecimal;
 
 final class AlgoritmosUtils {
 
@@ -270,7 +271,12 @@ final class AlgoritmosUtils {
         if (0 < n) {
             double r = 1;
             while (0 <= localI) {
-                r = (r + n / r) / 2;
+                final boolean rInicial = new BigDecimal(r).compareTo(new BigDecimal(1)) == 0;
+                if (rInicial) {
+                    r = new BigDecimal((1 + n / 1) / 2).doubleValue();
+                } else {
+                    r = (r + n / r) / (double) 2;
+                }
                 localI = localI - 1;
             }
             return r;
@@ -306,19 +312,16 @@ final class AlgoritmosUtils {
         validaCrivo(a, n);
         int i;
         int multiplo;
-        for (i = 0; i < a.length; i++) {
-            i = 2;
-            final double limite = Math.abs(Math.sqrt(n));
-            while (i <= limite) {
-                if (a[i] == 0) {
-                    multiplo = i + 1;
-                    while (multiplo <= n) {
-                        a[multiplo] = 1;
-                        multiplo = multiplo + 1;
-                    }
+        int i = 1;
+        while (i <= Math.sqrt(n)) {
+            if (a[i] == 0) {
+                multiplo = i + 1;
+                while (multiplo <= n) {
+                    a[multiplo] = 1;
+                    multiplo = multiplo + 1;
                 }
-                i = i + 1;
             }
+            i = i + 1;
         }
         return a;
     }
@@ -370,9 +373,10 @@ final class AlgoritmosUtils {
         // TODO verificar se argumentos fornecidos conforme exigência
         int p,
             i;
-        final boolean validaInput = 1 <= arguments[1];
+        final int minArguments = 5;
+        final boolean validaInput = arguments.length >= minArguments && 1 <= arguments[1];
         if (validaInput) {
-            p = arguments[3];
+            p = arguments[2];
             i = arguments[1] - 1;
             while (0 <= i) {
                 p *= arguments[0] + arguments[i + 2];
@@ -463,8 +467,8 @@ final class AlgoritmosUtils {
      * @param m mes (1...12)
      * @param a ano (MIN_YEAR...MAX_YEAR)*/
     static void validaDiaDaSemana(final int d, final int m, final int a) {
-        if (d < 1 || d > MAX_DAYS_OF_MONTH && (m < 1 || m > DEZEMBRO && a < MIN_YEAR)) {
-                    throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
+        if (d < 1 || d > MAX_DAYS_OF_MONTH || (m < 1 || m > DEZEMBRO && a < MIN_YEAR)) {
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
 

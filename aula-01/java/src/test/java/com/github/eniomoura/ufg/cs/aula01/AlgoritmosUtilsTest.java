@@ -17,7 +17,7 @@ public class AlgoritmosUtilsTest {
 
     @Test
     public void testaDiaDaSemana(){
-        assertEquals(3, AlgoritmosUtils.diaDaSemana(11, 4, 2019));
+        assertEquals(4, AlgoritmosUtils.diaDaSemana(11, 1, 2019));
     }
 
     @Test
@@ -71,13 +71,18 @@ public class AlgoritmosUtilsTest {
     }
 
     @Test
-    public void testaPrimo() {
+    public void testaPrimoVerdadeiro() {
         assertEquals(true, AlgoritmosUtils.primo(3));
     }
 
     @Test
+    public void testaPrimoFalso() {
+        assertEquals(false, AlgoritmosUtils.primo(4));
+    }
+
+    @Test
     public void testaCrivoErastotenes() {
-        assertArrayEquals(new int[]{2,3}, AlgoritmosUtils.crivoErastotenes(new int[]{2, 3}, 2));
+        assertArrayEquals(new int[]{2, 0, 1, 1, 1, 1}, AlgoritmosUtils.crivoErastotenes(new int[]{2, 0, 3, 4, 5, 6}, 5));
     }
     
     @Test
@@ -96,9 +101,15 @@ public class AlgoritmosUtilsTest {
     }
 
     @Test
-    public void testaFibonacci() {
+    public void testaFibonacciNormal() {
         assertEquals(2, AlgoritmosUtils.fibonacci(3));
     }
+
+    @Test
+    public void testaFibonacciExtremo() {
+        assertEquals(0, AlgoritmosUtils.fibonacci(0));
+    }
+
 
     @Test
     public void testaCpf() {
@@ -108,5 +119,115 @@ public class AlgoritmosUtilsTest {
     @Test
     public void testaCpf2() {
         assertEquals(true, AlgoritmosUtils.cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
+    }
+
+    @Test
+    public void testaMain(){
+        AlgoritmosUtils.main(new String[0]);
+    }
+
+    @Test
+    public void invalidoPropriedade3025(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.propriedade3025(-99999));
+    }
+
+    @Test
+    public void invalidoPropriedade153(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.propriedade153(-99999));
+    }
+
+    @Test
+    public void invalidoDiaDaSemana(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.diaDaSemana(32, 9999, 2016));
+    }
+
+    @Test
+    public void invalidoMod() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.mod(-9, -9));
+    }
+
+    @Test
+    public void invalidoSomaNaturais(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.somaNaturais(-9));
+    }
+
+    @Test
+    public void invalidoFatorial(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.fatorial(-9));
+    }
+
+    @Test
+    public void invalidoProduto(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.produto(-9, -9));
+    }
+
+    @Test
+    public void invalidoPotencia(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.potencia(-9, -9));
+    }
+
+    @Test
+    public void invalidoPi(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.pi(-9));
+    }
+
+    @Test
+    public void invalidoLogaritmoNatural(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.logaritmoNatural(-9, -9));
+    }
+
+    @Test
+    public void invalidoRazaoAurea(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.razaoAurea(-9, -9, -9));
+    }
+
+    @Test
+    public void invalidoQuadradoPerfeito(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.quadradoPerfeito(-9));
+    }
+
+    @Test
+    public void invalidoRaiz(){
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.raiz(-9, -9));
+    }
+
+    @Test
+    public void invalidoPrimoVerdadeiro() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.primo(-9));
+    }
+
+    @Test
+    public void invalidoCrivoErastotenes() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.validaCrivo(new int[]{2, 0, 3, 4, 5, 6}, -9));
+    }
+    
+    @Test
+    public void invalidoMdc() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.mdc(-9, -9));
+    }
+
+    @Test
+    public void invalidoMdc2() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.mdc2(-9, -9));
+    }
+
+    @Test
+    public void invalidoHorner() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.horner());
+    }
+
+    @Test
+    public void invalidoFibonacci() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.fibonacci(-9));
+    }
+
+    @Test
+    public void invalidoCpf() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.cpf(new int[]{9}));
+    }
+
+    @Test
+    public void invalidoCpf2() {
+        assertThrows(IllegalArgumentException.class, () -> AlgoritmosUtils.cpf2(new int[]{9}));
     }
 }

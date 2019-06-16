@@ -297,8 +297,8 @@ function mdc2(a, b) {
 
 function horner(/*x, g, ag, ag-1, ..., a0*/) {
     if (1 <= arguments[1]) {
-        p = arguments[3]
-        i = arguments[1] - 1
+        let p = arguments[2];
+        let i = arguments[1] - 1;
         while (0 <= i) {
             p *= arguments[0] + arguments[i + 2]
             i = i - 1
