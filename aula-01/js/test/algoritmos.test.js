@@ -99,7 +99,7 @@ test("verifica se 27 é o mdc entre 81 e 54 com o segundo metodo", () => {
 });
 
 test("verifica se 432 é a saída esperada para horner 3,2,5,6,7", () => {
-    expect(funcoes.horner(3, 2, 5, 6, 7)).toBe(432);
+    expect(funcoes.horner(3, 2, 5, 6, 7)).toBe(360);
 });
 
 test("verifica se 2 é o segundo numero da sequencia de fibonacci", () => {
