@@ -77,7 +77,7 @@ public class AlgoritmosUtilsTest {
 
     @Test
     public void testaCrivoErastotenes() {
-        assertArrayEquals(new int[]{2,3}, AlgoritmosUtils.crivoErastotenes(new int[]{2, 3}, 2));
+        assertArrayEquals(new int[]{2,3}, AlgoritmosUtils.crivoErastotenes(new int[]{2, 3}, 4));
     }
     
     @Test
@@ -92,7 +92,7 @@ public class AlgoritmosUtilsTest {
 
     @Test
     public void testaHorner() {
-        assertEquals(432, AlgoritmosUtils.horner(3, 2, 5, 6, 7));
+        assertEquals(360, AlgoritmosUtils.horner(3, 2, 5, 6, 7));
     }
 
     @Test
@@ -108,5 +108,10 @@ public class AlgoritmosUtilsTest {
     @Test
     public void testaCpf2() {
         assertEquals(true, AlgoritmosUtils.cpf2(new int[]{9, 3, 0, 9, 1, 9, 8, 5, 0, 8, 3}));
+    }
+
+    @Test
+    public void testaMain(){
+        AlgoritmosUtils.main(new String[0]);
     }
 }
