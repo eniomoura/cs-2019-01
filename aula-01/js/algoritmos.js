@@ -49,7 +49,7 @@ function diaDaSemana(d, m, a) {
         let s = d + 2 * m + (3 * (m + 1)) / 5 + a + a / 4 - a / 100 + a / 400;
         return parseInt(s % 7);
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
@@ -68,7 +68,7 @@ function mod(x, y) {
         }
         return s;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
@@ -89,7 +89,7 @@ function somaNaturais(n) {
 
         return s;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
@@ -109,7 +109,7 @@ function fatorial(n) {
         }
         return f;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
@@ -136,7 +136,7 @@ function produto(a, b) {
         }
         return s;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
@@ -157,14 +157,14 @@ function potencia(x, y) {
         }
         return potencia;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 9 da lista.
  *
- * @param {*} n coeficiente de precisao do calculo
+ * @param {number} n coeficiente de precisao do calculo
  * @returns aproximacao de pi
  */
 function pi(n) {
@@ -181,15 +181,15 @@ function pi(n) {
         }
         return p;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 10 da lista.
  *
- * @param {*} n valor a ser aplicado o ln
- * @param {*} k coeficiente de precisao do calculo
+ * @param {number} n valor a ser aplicado o ln
+ * @param {number} k coeficiente de precisao do calculo
  * @returns aproximacao do ln(n)
  */
 function logaritmoNatural(n, k) {
@@ -206,16 +206,16 @@ function logaritmoNatural(n, k) {
         }
         return e;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 11 da lista.
  *
- * @param {*} x primeiro operando inteiro positivo
- * @param {*} y segundo operando inteiro positivo
- * @param {*} k terceiro operando inteiro positivo
+ * @param {number} x primeiro operando inteiro positivo
+ * @param {number} y segundo operando inteiro positivo
+ * @param {number} k terceiro operando inteiro positivo
  * @returns aproximacao da razao aurea baseada em x, y e k
  */
 function razaoAurea(x, y, k) {
@@ -231,14 +231,14 @@ function razaoAurea(x, y, k) {
         }
         return c / a;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 12 da lista.
  *
- * @param {*} n numero a verificar a propriedade
+ * @param {number} n numero a verificar a propriedade
  * @returns retorna verdadeiro se a propriedade e verificada
  */
 function quadradoPerfeito(n) {
@@ -251,15 +251,15 @@ function quadradoPerfeito(n) {
         }
         return s == n;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 13 da lista.
  *
- * @param {*} n primeiro operando da radiciacao
- * @param {*} i segundo operando da radiciacao
+ * @param {number} n primeiro operando da radiciacao
+ * @param {number} i segundo operando da radiciacao
  * @returns raiz i-esima de n
  */
 function raiz(n, i) {
@@ -271,14 +271,14 @@ function raiz(n, i) {
         }
         return r;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 14 da lista.
  *
- * @param {*} n numero a verificar a propriedade
+ * @param {number} n numero a verificar a propriedade
  * @returns retorna verdadeiro se a propriedade e verificada
  */
 function primo(n) {
@@ -292,15 +292,15 @@ function primo(n) {
         }
         return true;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 15 da lista.
  *
- * @param {*} a vetor a calcular o crivo
- * @param {*} n valor a usar como argumento para o crivo
+ * @param {array} a vetor a calcular o crivo
+ * @param {number} n valor a usar como argumento para o crivo
  * @returns retorna o vetor com os numeros primos
  */
 function crivoErastotenes(a, n) {
@@ -320,21 +320,21 @@ function crivoErastotenes(a, n) {
                 i = i + 1;
             }
         } else {
-            throw new Error("Argumento Inválido");
+            throw new RangeError("Valor fora da faixa");
         }
     }
     if (i == a.length + 1) {
         return a;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 16 da lista.
  *
- * @param {*} a primeiro operando do mdc
- * @param {*} b segundo operando do mdc
+ * @param {number} a primeiro operando do mdc
+ * @param {number} b segundo operando do mdc
  * @returns retorna o minimo divisor comum entre a e b
  */
 function mdc(a, b) {
@@ -346,15 +346,15 @@ function mdc(a, b) {
         }
         return a;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 17 da lista.
  *
- * @param {*} a primeiro operando do mdc
- * @param {*} b segundo operando do mdc
+ * @param {number} a primeiro operando do mdc
+ * @param {number} b segundo operando do mdc
  * @returns retorna o minimo divisor comum entre a e b
  */
 function mdc2(a, b) {
@@ -368,13 +368,13 @@ function mdc2(a, b) {
         }
         return a;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 18 da lista.
- * @param {*} arguments coeficientes do polinomio avaliado
+ * @param {array} arguments coeficientes do polinomio avaliado
  * @returns resultado do somatorio de horner
  */
 function horner(/*x, g, ag, ag-1, ..., a0*/) {
@@ -387,14 +387,14 @@ function horner(/*x, g, ag, ag-1, ..., a0*/) {
         }
         return p;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 19 da lista.
  *
- * @param {*} n numero de iteracoes da soma de fibonacci
+ * @param {number} n numero de iteracoes da soma de fibonacci
  * @returns n-esimo valor de fibonacci na sequencia
  */
 function fibonacci(n) {
@@ -413,14 +413,14 @@ function fibonacci(n) {
         }
         return c;
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 20 da lista.
  *
- * @param {*} d vetor contendo os numeros do cpf a ser validado
+ * @param {array} d vetor contendo os numeros do cpf a ser validado
  * @returns retorna true se o cpf e valido
  */
 function cpf(d) {
@@ -449,14 +449,14 @@ function cpf(d) {
         let dk = (k % 11) % 10;
         return dj == d[9] && dk == d[10];
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
 /**
  * algoritmo 21 da lista.
  *
- * @param {*} d vetor contendo os numeros do cpf a ser validado
+ * @param {array} d vetor contendo os numeros do cpf a ser validado
  * @returns retorna true se o cpf e valido
  */
 function cpf2(d) {
@@ -473,7 +473,7 @@ function cpf2(d) {
         let k = ((s - p + 9 * d[9]) % 11) % 10;
         return j == d[9] && k == d[10];
     } else {
-        throw new Error("Argumento Inválido");
+        throw new RangeError("Valor fora da faixa");
     }
 }
 
