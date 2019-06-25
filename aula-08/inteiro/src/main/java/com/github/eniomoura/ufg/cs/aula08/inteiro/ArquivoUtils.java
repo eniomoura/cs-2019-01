@@ -10,11 +10,12 @@ import java.io.RandomAccessFile;
  */
 public final class ArquivoUtils {
 
+    /** Referência do arquivo com o qual estamos trabalhando. */
+    private static File fileReference;
+
     /** construtor private explicitando classe utilitaria. */
     private ArquivoUtils() {
     }
-    /** Referência do arquivo com o qual estamos trabalhando. */
-    private static File fileReference;
 
     /**
      * @return retorna true se a fileReference passada existe
@@ -34,19 +35,14 @@ public final class ArquivoUtils {
      * retorna um vetor com os primeiros bytes do arquivo.
      * @param quantidade quantidade de bytes a ser retornada
      * @return retorna os <code>quantidade</code> primeiros bytes do arquivo.
+     * @throws IOException exceção é recebida por quem chama ao acontecer erro de I/O.
      */
-    static byte[] primeirosBytes(final int quantidade) {
+    static byte[] primeirosBytes(final int quantidade) throws IOException {
         RandomAccessFile file;
-        byte[] rvalue = new byte[quantidade];
-        try {
+        final byte[] rvalue = new byte[quantidade];
             file = new RandomAccessFile(fileReference, "r");
             file.readFully(rvalue);
             file.close();
-        } catch (IOException e) {
-            System.err.println("Erro inesperado na leitura do arquivo '"
-                                + fileReference.getAbsolutePath() + "'.");
-            e.printStackTrace();
-        }
         return rvalue;
     }
 
@@ -58,9 +54,9 @@ public final class ArquivoUtils {
     }
 
     /**
-     * @param fileReferenceToSet o fileReference a ser setado
+     * @param refToSet o fileReference a ser setado
      */
-    public static void setFileReference(final File fileReferenceToSet) {
-        ArquivoUtils.fileReference = fileReferenceToSet;
+    public static void setFileReference(final File refToSet) {
+        ArquivoUtils.fileReference = refToSet;
     }
 }

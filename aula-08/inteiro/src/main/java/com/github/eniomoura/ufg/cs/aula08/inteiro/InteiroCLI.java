@@ -2,6 +2,7 @@ package com.github.eniomoura.ufg.cs.aula08.inteiro;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Classe contendo os processamentos necessários para input e output
@@ -16,18 +17,20 @@ public final class InteiroCLI {
     /**
      * Ponto de entrada do programa.
      *
-     * @param args : parâmetros de CLI
+     * @param args parâmetros de CLI
+     * @throws IOException a execução do programa falha se um erro imprevisto ocorrer na leitura do arquivo.
      */
-    public static void main(final String[] args) {
-        validarParametro(args);
+    public static void main(final String[] args) throws IOException {
+        if (parametrosValidos(args)) {
+            throw new IllegalArgumentException("O primeiro argumento deve ser um caminho de arquivo.");
+        }
         final String arquivo = args[0];
         final int quantidade = 4;
+        ArquivoUtils.setFileReference(new File(arquivo));
         ArquivoUtils.existe();
         ArquivoUtils.podeLer();
-        ArquivoUtils.setFileReference(new File(arquivo));
-        byte[] quatroPrimeiros = ArquivoUtils.primeirosBytes(quantidade);
-        System.out.printf("0x%02X", quatroPrimeiros);
-
+        final byte[] quatroPrimeiros = ArquivoUtils.primeirosBytes(quantidade);
+        System.console().printf("%s", Arrays.toString(quatroPrimeiros));
     }
 
     /**
@@ -35,19 +38,17 @@ public final class InteiroCLI {
      * @param parametro vetor de parâmetros de CLI
      * @return retorna true se válido, joga exception se não válido
      */
-    private static boolean validarParametro(final String[] parametro) {
+    private static boolean parametrosValidos(final String[] parametro) {
         if (parametro.length > 0) {
-            File temp = new File(parametro[0]);
+            final File temp = new File(parametro[0]);
             try {
                 temp.getCanonicalPath();
                 return true;
             } catch (IOException e) {
-                System.err.println("O primeiro argumento deve ser um caminho de arquivo.");
-                throw new IllegalArgumentException();
+                return false;
             }
         } else {
-            System.err.println("Falta um argumento com o caminho do arquivo.");
-            throw new IllegalArgumentException();
+            return false;
         }
     }
 }
