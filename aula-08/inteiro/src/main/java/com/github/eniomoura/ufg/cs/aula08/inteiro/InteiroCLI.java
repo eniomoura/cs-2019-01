@@ -2,7 +2,7 @@ package com.github.eniomoura.ufg.cs.aula08.inteiro;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
+import org.apache.commons.codec.binary.Hex;
 
 /**
  * Classe contendo os processamentos necessários para input e output
@@ -21,7 +21,7 @@ public final class InteiroCLI {
      * @throws IOException a execução do programa falha se um erro imprevisto ocorrer na leitura do arquivo.
      */
     public static void main(final String[] args) throws IOException {
-        if (parametrosValidos(args)) {
+        if (!parametrosValidos(args)) {
             throw new IllegalArgumentException("O primeiro argumento deve ser um caminho de arquivo.");
         }
         final String arquivo = args[0];
@@ -30,7 +30,7 @@ public final class InteiroCLI {
         ArquivoUtils.existe();
         ArquivoUtils.podeLer();
         final byte[] quatroPrimeiros = ArquivoUtils.primeirosBytes(quantidade);
-        System.console().printf("%s", Arrays.toString(quatroPrimeiros));
+        System.console().printf(Hex.encodeHexString(quatroPrimeiros));
     }
 
     /**
