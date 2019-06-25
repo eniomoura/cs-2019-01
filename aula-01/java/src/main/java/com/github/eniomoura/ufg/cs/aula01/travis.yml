@@ -1,0 +1,10 @@
+language: java 
+ 
+jdk: 
+  - oraclejdk8 
+addons:
+  sonarcloud:
+    organization: "eniomoura-github"
+script:
+  - cd ./aula-01/java/
+  - mvn package
