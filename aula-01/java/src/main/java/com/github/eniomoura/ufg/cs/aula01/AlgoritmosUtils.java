@@ -320,7 +320,7 @@ final class AlgoritmosUtils {
         if (0 < n) {
             double r = 1;
             while (0 <= localI) {
-                final boolean rInicial = new BigDecimal(r).compareTo(new BigDecimal(1)) == 0;
+                final boolean rInicial = new BigDecimal(Double.toString(r)).compareTo(new BigDecimal("1")) == 0;
                 if (rInicial) {
                     r = new BigDecimal((1 + n / 1) / 2).doubleValue();
                 } else {
@@ -532,7 +532,7 @@ final class AlgoritmosUtils {
      * @param a ano (MIN_YEAR...MAX_YEAR)
      */
     static void validaDiaDaSemana(final int d, final int m, final int a) {
-        if (d < 1 || d > MAX_DAYS_OF_MONTH || (m < 1 || m > DEZEMBRO && a < MIN_YEAR)) {
+        if (d < 1 || d > MAX_DAYS_OF_MONTH || m < 1 || m > DEZEMBRO && a < MIN_YEAR) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
     }
