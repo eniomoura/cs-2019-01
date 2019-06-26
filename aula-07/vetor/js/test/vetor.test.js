@@ -1,7 +1,7 @@
 const funcoes = require("../vetor");
 
 test("teste menor temperatura", () => {
-    expect(funcoes.menorTemperatura([1, 2, 3]).toBe(1));
+    expect(funcoes.menorTemperatura([1, 2, 3])).toBe(1);
 });
 
 test("teste soma impares", () => {

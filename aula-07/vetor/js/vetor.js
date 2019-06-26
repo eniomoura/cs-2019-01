@@ -28,4 +28,4 @@ function numValoresIguais(numeros, igualA) {
     return returnValue;
 }
 
-module.exports = { menorTemperatura, somaImpares, numValoresIguais, numLetras };
+module.exports = { menorTemperatura, somaImpares, numValoresIguais };
