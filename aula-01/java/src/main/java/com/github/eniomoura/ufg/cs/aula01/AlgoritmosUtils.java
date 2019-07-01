@@ -58,7 +58,6 @@ final class AlgoritmosUtils {
         if (n <= 0 || n > MAX_4_CASAS) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
-
         final int i = n / 100;
         final int j = n % 100;
         return (i + j) * (i + j) == n;
@@ -72,15 +71,14 @@ final class AlgoritmosUtils {
      */
     static boolean propriedade153(final int cdu) {
         final int minValue = 100;
-        if (minValue <= cdu && cdu <= MAX_3_CASAS) {
+        if (!(minValue <= cdu && cdu <= MAX_3_CASAS)) {
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
+        }
             final int c = cdu / 100;
             final int du = cdu % 100;
             final int d = du / 10;
             final int u = du % 10;
             return (c * c * c) + (d * d * d) + (u * u * u) == cdu;
-        } else {
-            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
-        }
     }
 
     /**
@@ -112,15 +110,14 @@ final class AlgoritmosUtils {
      * @return valor limitado pelo modulo
      */
     static int mod(final int x, final int y) {
-        if (0 <= y && 0 < x) {
-            int s = x;
-            while (y <= s) {
-                s = s - y;
-            }
-            return s;
-        } else {
+        if (!(0 <= y && 0 < x)) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int s = x;
+        while (y <= s) {
+            s = s - y;
+        }
+        return s;
     }
 
     /**
@@ -130,17 +127,16 @@ final class AlgoritmosUtils {
      * @return resultado da soma
      */
     static int somaNaturais(final int n) {
-        if (0 <= n) {
-            int i = 2;
-            int s = 1;
-            while (i <= n) {
-                s += i;
-                i = i + 1;
-            }
-            return s;
-        } else {
+        if (0 > n) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int i = 2;
+        int s = 1;
+        while (i <= n) {
+            s += i;
+            i = i + 1;
+        }
+        return s;
     }
 
     /**
@@ -151,17 +147,16 @@ final class AlgoritmosUtils {
      */
     static int fatorial(final int n) {
         final boolean validInput = 1 <= n;
-        if (validInput) {
-            int i = 2;
-            int f = 1;
-            while (i <= n) {
-                f *= i;
-                i = i + 1;
-            }
-            return f;
-        } else {
+        if (!validInput) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int i = 2;
+        int f = 1;
+        while (i <= n) {
+            f *= i;
+            i = i + 1;
+        }
+        return f;
     }
 
     /**
@@ -171,26 +166,25 @@ final class AlgoritmosUtils {
      * @return produto de a e b
      */
     static int produto(final int a, final int b) {
-        int totalParcelas;
-        int parcela;
-        if (0 <= a && 0 <= b) {
-            if (b < a) {
-                totalParcelas = b;
-                parcela = a;
-            } else {
-                totalParcelas = a;
-                parcela = b;
-            }
-            int i = 1;
-            int s = 0;
-            while (i <= totalParcelas) {
-                s += parcela;
-                i += 1;
-            }
-            return s;
-        } else {
+        if (!(0 <= a && 0 <= b)) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int totalParcelas;
+        int parcela;
+        if (b < a) {
+            totalParcelas = b;
+            parcela = a;
+        } else {
+            totalParcelas = a;
+            parcela = b;
+        }
+        int i = 1;
+        int s = 0;
+        while (i <= totalParcelas) {
+            s += parcela;
+            i += 1;
+        }
+        return s;
     }
 
     /**
@@ -200,22 +194,21 @@ final class AlgoritmosUtils {
      * @return a elevado na b potencia
      */
     static int potencia(final int x, final int y) {
-        if (0 < x && 0 <= y) {
-            final int inicial = 1;
-            int potencia = inicial;
-            int i = inicial;
-            while (i <= y) {
-                if (potencia == inicial) {
-                    potencia = produto(1, x);
-                } else {
-                    potencia = produto(potencia, x);
-                }
-                i += 1;
-            }
-            return potencia;
-        } else {
+        if (!(0 < x && 0 <= y)) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        final int inicial = 1;
+        int potencia = inicial;
+        int i = inicial;
+        while (i <= y) {
+            if (potencia == inicial) {
+                potencia = produto(1, x);
+            } else {
+                potencia = produto(potencia, x);
+            }
+            i += 1;
+        }
+        return potencia;
     }
 
     /**
@@ -225,22 +218,21 @@ final class AlgoritmosUtils {
      */
     static double pi(final int n) {
         final boolean validInput = 1 <= n;
-        if (validInput) {
-            double i = 1;
-            double s = -1;
-            double d = -1;
-            double p = 0;
-            final int numerador = 4;
-            while (i <= n) {
-                d += 2;
-                s *= -1;
-                p += numerador * s / d;
-                i += 1;
-            }
-            return p;
-        } else {
+        if (!validInput) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        double i = 1;
+        double s = -1;
+        double d = -1;
+        double p = 0;
+        final int numerador = 4;
+        while (i <= n) {
+            d += 2;
+            s *= -1;
+            p += numerador * s / d;
+            i += 1;
+        }
+        return p;
     }
 
     /**
@@ -250,21 +242,20 @@ final class AlgoritmosUtils {
      * @return aproximacao do ln(n)
      */
     static double logaritmoNatural(final int n, final int k) {
-        if (1 <= n && 2 <= k) {
-            double i = 2;
-            double e = 1 + n;
-            double numerador = 2;
-            double denominador = 1;
-            while (i <= k) {
-                numerador *= numerador;
-                denominador *= i;
-                e += numerador / denominador;
-                i = i + 1;
-            }
-            return e;
-        } else {
+        if (!(1 <= n && 2 <= k)) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        double i = 2;
+        double e = 1 + n;
+        double numerador = 2;
+        double denominador = 1;
+        while (i <= k) {
+            numerador *= numerador;
+            denominador *= i;
+            e += numerador / denominador;
+            i = i + 1;
+        }
+        return e;
     }
 
     /**
@@ -296,17 +287,16 @@ final class AlgoritmosUtils {
      */
     static Boolean quadradoPerfeito(final int n) {
         final boolean validInput = 1 < n;
-        if (validInput) {
-            int i = 1;
-            int s = 1;
-            while (s < n) {
-                i += 2;
-                s += i;
-            }
-            return s == n;
-        } else {
+        if (!validInput) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int i = 1;
+        int s = 1;
+        while (s < n) {
+            i += 2;
+            s += i;
+        }
+        return s == n;
     }
 
     /**
@@ -316,22 +306,21 @@ final class AlgoritmosUtils {
      * @return raiz i-esima de n
      */
     static double raiz(final int n, final int i) {
-        int localI = i;
-        if (0 < n) {
-            double r = 1;
-            while (0 <= localI) {
-                final boolean rInicial = new BigDecimal(Double.toString(r)).compareTo(new BigDecimal("1")) == 0;
-                if (rInicial) {
-                    r = new BigDecimal((1 + n / 1) / 2).doubleValue();
-                } else {
-                    r = (r + n / r) / (double) 2;
-                }
-                localI = localI - 1;
-            }
-            return r;
-        } else {
+        if (0 >= n) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int localI = i;
+        double r = 1;
+        while (0 <= localI) {
+            final boolean rInicial = new BigDecimal(Double.toString(r)).compareTo(new BigDecimal("1")) == 0;
+            if (rInicial) {
+                r = new BigDecimal((1 + n / 1) / 2).doubleValue();
+            } else {
+                r = (r + n / r) / (double) 2;
+            }
+            localI = localI - 1;
+        }
+        return r;
     }
 
     /**
@@ -341,18 +330,17 @@ final class AlgoritmosUtils {
      */
     static Boolean primo(final int n) {
         final boolean validInput = n > 1;
-        if (validInput) {
-            int i = 2;
-            while (i < n) {
-                if (n % i == 0) {
-                    return false;
-                }
-                i += 1;
-            }
-            return true;
-        } else {
+        if (!validInput) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int i = 2;
+        while (i < n) {
+            if (n % i == 0) {
+                return false;
+            }
+            i += 1;
+        }
+        return true;
     }
 
     /**
@@ -387,16 +375,15 @@ final class AlgoritmosUtils {
     static int mdc(final int a, final int b) {
         int localA = a;
         int localB = b;
-        if (localB < localA && 0 < localB) {
-            while (localB != 0) {
-                final int m = localA % localB;
-                localA = localB;
-                localB = m;
-            }
-            return localA;
-        } else {
+        if (!(localB < localA && 0 < localB)) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        while (localB != 0) {
+            final int m = localA % localB;
+            localA = localB;
+            localB = m;
+        }
+        return localA;
     }
 
     /**
@@ -408,18 +395,17 @@ final class AlgoritmosUtils {
     static int mdc2(final int a, final int b) {
         int localA = a;
         int localB = b;
-        if (localB < localA && 0 < localB) {
-            while (localA != localB) {
-                if (localA > localB) {
-                    localA = localA - localB;
-                } else {
-                    localB = localB - localA;
-                }
-            }
-            return localA;
-        } else {
+        if (!(localB < localA && 0 < localB)) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        while (localA != localB) {
+            if (localA > localB) {
+                localA = localA - localB;
+            } else {
+                localB = localB - localA;
+            }
+        }
+        return localA;
     }
 
     /**
@@ -428,21 +414,20 @@ final class AlgoritmosUtils {
      * @return resultado do somatorio de horner
      */
     static int horner(final int... arguments) {
-        int p,
-            i;
         final int minArguments = 5;
         final boolean validaInput = arguments.length >= minArguments && 1 <= arguments[1];
-        if (validaInput) {
-            p = arguments[2];
-            i = arguments[1] - 1;
-            while (0 <= i) {
-                p *= arguments[0] + arguments[i + 2];
-                i = i - 1;
-            }
-            return p;
-        } else {
+        if (!validaInput) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        int p,
+            i;
+        p = arguments[2];
+        i = arguments[1] - 1;
+        while (0 <= i) {
+            p *= arguments[0] + arguments[i + 2];
+            i = i - 1;
+        }
+        return p;
     }
 
     /**
@@ -451,27 +436,23 @@ final class AlgoritmosUtils {
      * @return n-esimo valor de fibonacci na sequencia
      */
     static int fibonacci(final int n) {
-        int a,
-            c,
-            t,
-            i;
-        if (0 <= n) {
-            a = 0;
-            c = 1;
-            if (n == 0 || n == 1) {
-                return n;
-            }
-            i = 2;
-            while (i <= n) {
-                t = c;
-                c += a;
-                a = t;
-                i += 1;
-            }
-            return c;
-        } else {
+        if (0 > n) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        int a=0,
+            c=1,
+            t,
+            i=2;
+        while (i <= n) {
+            t = c;
+            c += a;
+            a = t;
+            i += 1;
+        }
+        return c;
     }
 
     /**
@@ -480,19 +461,18 @@ final class AlgoritmosUtils {
      * @return retorna true se o cpf e valido
      */
     static Boolean cpf(final int[] d) {
-        if (d.length == CPF_LENGTH) {
-            final int j = d[0] + (2 * d[1]) + (3 * d[2])
-                  + (4 * d[3]) + (5 * d[4]) + (6 * d[5])
-                  + (7 * d[6]) + (8 * d[7]) + (9 * d[8]);
-            final int k = d[1] + (2 * d[2]) + (3 * d[3])
-                  + (4 * d[4]) + (5 * d[5]) + (6 * d[6])
-                  + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
-            final int dj = (j % CPF_LENGTH) % 10;
-            final int dk = (k % CPF_LENGTH) % 10;
-            return dj == d[9] && dk == d[10];
-        } else {
+        if (d.length != CPF_LENGTH) {
             throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
         }
+        final int j = d[0] + (2 * d[1]) + (3 * d[2])
+                + (4 * d[3]) + (5 * d[4]) + (6 * d[5])
+                + (7 * d[6]) + (8 * d[7]) + (9 * d[8]);
+        final int k = d[1] + (2 * d[2]) + (3 * d[3])
+                + (4 * d[4]) + (5 * d[5]) + (6 * d[6])
+                + (7 * d[7]) + (8 * d[8]) + (9 * d[9]);
+        final int dj = (j % CPF_LENGTH) % 10;
+        final int dk = (k % CPF_LENGTH) % 10;
+        return dj == d[9] && dk == d[10];
     }
 
     /**
@@ -501,26 +481,25 @@ final class AlgoritmosUtils {
      * @return retorna true se o cpf e valido
      */
     static Boolean cpf2(final int[] d) {
+        if (d.length != CPF_LENGTH) {
+            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
+        }
         int c;
         int p;
         int s;
         final int j;
         final int k;
-        if (d.length == CPF_LENGTH) {
-            c = 8;
-            p = d[8];
-            s = d[8];
-            while (0 <= c) {
-                p += d[c];
-                s += p;
-                c -= 1;
-            }
-            j = (s % CPF_LENGTH) % 10;
-            k = ((s - p + 9 * d[9]) % CPF_LENGTH) % 10;
-            return j == d[9] && k == d[10];
-        } else {
-            throw new IllegalArgumentException(ILLEGAL_ARG_MSG);
+        c = 8;
+        p = d[8];
+        s = d[8];
+        while (0 <= c) {
+            p += d[c];
+            s += p;
+            c -= 1;
         }
+        j = (s % CPF_LENGTH) % 10;
+        k = ((s - p + 9 * d[9]) % CPF_LENGTH) % 10;
+        return j == d[9] && k == d[10];
     }
     // endregion
 
@@ -563,5 +542,4 @@ final class AlgoritmosUtils {
     }
 
     // endregion
-
 }
