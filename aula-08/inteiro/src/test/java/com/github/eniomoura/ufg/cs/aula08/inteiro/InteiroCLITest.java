@@ -8,8 +8,7 @@ import java.io.IOException;
 public class InteiroCLITest{
 
     @Test
-    public void testaMain() throws IOException {
+    public void validacaoTest() throws IOException {
         InteiroCLI.main(new String[]{"C:/Users/Enio/cs-2019-01/aula-08/inteiro/target/classes/com/github/eniomoura/ufg/cs/aula08/inteiro/InteiroCLI.class"});
     }
-
 }
