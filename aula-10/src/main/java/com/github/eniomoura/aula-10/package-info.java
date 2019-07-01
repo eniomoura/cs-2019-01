@@ -9,4 +9,4 @@
  * @see com.github.kyriosdata.exemplo.domain.Calendario
  * @see com.github.kyriosdata.exemplo.application.console.ProgramaCalendario
  */
-package com.github.kyriosdata.exemplo;
+package com.github.eniomoura.aula10;
