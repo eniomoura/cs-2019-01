@@ -2,7 +2,7 @@ package com.github.eniomoura.aula10;
 
 public final class ProgramaCalendario {
 
-    public static final int EXECUTION_ERROR = -1;
+    private static final int EXECUTION_ERROR = -1;
 
     /** construtor private explicitando classe utilitaria. */
     private ProgramaCalendario() {
