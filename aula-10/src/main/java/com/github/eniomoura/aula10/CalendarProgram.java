@@ -1,19 +1,17 @@
 package com.github.eniomoura.aula10;
 
-public final class ProgramaCalendario {
-
-    private static final int EXECUTION_ERROR = -1;
+public final class CalendarProgram {
 
     /** construtor private explicitando classe utilitaria. */
-    private ProgramaCalendario() {
+    private CalendarProgram() {
     }
 
     public static void main(final String[] args) {
         try {
-            final int output = CalendarioUtils.executar(args);
+            final int output = CalendarUtils.run(args);
             System.exit(output);
         } catch (IllegalArgumentException ex) {
-            System.exit(EXECUTION_ERROR);
+            System.exit(GeneralUtils.EXECUTION_ERROR);
         }
     }
 }
