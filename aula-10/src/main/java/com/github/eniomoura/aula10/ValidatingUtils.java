@@ -96,7 +96,7 @@ public final class ValidatingUtils {
         final int day = GeneralUtils.getDayFromDate(date);
         final int year = GeneralUtils.getYearFromDate(date);
         if (day > GeneralUtils.LAST_FEB_NON_LEAP) {
-            if (year == leapYear) {
+            if (CalculateDayUtils.isLeapYear(leapYear, year)) {
                 if (day > GeneralUtils.LAST_FEB_LEAP) {
                     throw new IllegalArgumentException();
                 }

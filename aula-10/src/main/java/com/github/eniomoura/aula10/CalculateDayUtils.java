@@ -134,8 +134,11 @@ public final class CalculateDayUtils {
         final int freqLeapYear = 4;
         final int century = 100;
         final int fourCenturies = 400;
+        if (year % century == 0 && year % fourCenturies != 0) {
+            return false;
+        }
         if ((leapYear - year) % freqLeapYear == 0) {
-            return year % century != 0 || year % fourCenturies != 0;
+            return true;
         }
         return false;
     }
