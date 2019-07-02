@@ -47,7 +47,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.eniomoura.encontre.application.console.ProgramaCalendario
+            com.github.eniomoura.ufg.cs.aula08.encontre.EncontreCLI
         </project.mainClass>
 
         <tools.dir>${project.basedir}/tools</tools.dir>
