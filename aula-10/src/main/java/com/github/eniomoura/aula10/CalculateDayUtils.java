@@ -12,21 +12,21 @@ public final class CalculateDayUtils {
                   weekDay = Integer.parseInt(
                         args[GeneralUtils.WEEKDAY_INDEX]);
         final String ref = args[GeneralUtils.REF_INDEX],
-                     targetDate = args[GeneralUtils.REF_INDEX];
+                     targetDate = args[GeneralUtils.TARGET_INDEX];
         final int iterationDirection = targetDate.compareTo(ref);
         String referenceDate = ref;
         int returnValue = weekDay;
         if (iterationDirection > 0) {
-            while (!targetDate.equals(referenceDate)) {
-                referenceDate = decrementDay(referenceDate, leapYear);
-                returnValue = decrementWeekDay(returnValue);
-            }
-        }
-        if (iterationDirection < 0) {
-            while (!targetDate.equals(referenceDate)) {
+            while (!referenceDate.equals(targetDate)) {
                 referenceDate = incrementDay(referenceDate,
                 leapYear);
                 returnValue = incrementWeekDay(returnValue);
+            }
+        }
+        if (iterationDirection < 0) {
+            while (!referenceDate.equals(targetDate)) {
+                referenceDate = decrementDay(referenceDate, leapYear);
+                returnValue = decrementWeekDay(returnValue);
             }
         }
         return returnValue;
@@ -135,8 +135,7 @@ public final class CalculateDayUtils {
         final int century = 100;
         final int fourCenturies = 400;
         if ((leapYear - year) % leapYearPeriodicity == 0) {
-            return year % century == 0
-                || year % fourCenturies == 0;
+            return year % century != 0 || year % fourCenturies != 0;
         }
         return false;
     }
