@@ -23,7 +23,8 @@ public final class ValidatingUtils {
     public static boolean validateInput(
         final int leapYear,
         final String date) {
-        if (leapYear < 1) {
+        final int minLeapYear = 1;
+        if (leapYear < minLeapYear) {
             throw new IllegalArgumentException();
         }
         validateDate(
@@ -47,17 +48,17 @@ public final class ValidatingUtils {
     public static void validateDate(
         final String date,
         final int leapYear) {
-        int day = GeneralUtils.getDayFromDate(date);
-        int month = GeneralUtils.getMonthFromDate(date);
         if (date.length() != GeneralUtils.DIGIT_COUNT) {
             throw new IllegalArgumentException();
         }
         validateDayBounds(date);
         validateMonthBounds(date);
         validateFirstDigit(date);
-        if (month == GeneralUtils.FEBRUARY) {
+        if (GeneralUtils.getMonthFromDate(date)
+        == GeneralUtils.FEBRUARY) {
             validateLeapDay(date, leapYear);
-        } else if (day == GeneralUtils.LONG_MONTH_LENGTH) {
+        } else if (GeneralUtils.getDayFromDate(date)
+        == GeneralUtils.LONG_MONTH_LEN) {
             validateLongMonth(date);
         }
     }
@@ -77,7 +78,7 @@ public final class ValidatingUtils {
 
     private static void validateDayBounds(final String date) {
         final int day = GeneralUtils.getDayFromDate(date);
-        if (day < 1 || day > GeneralUtils.LONG_MONTH_LENGTH) {
+        if (day < 1 || day > GeneralUtils.LONG_MONTH_LEN) {
             throw new IllegalArgumentException();
         }
     }
@@ -85,7 +86,7 @@ public final class ValidatingUtils {
     private static void validateLongMonth(final String date) {
         final int month = GeneralUtils.getMonthFromDate(date);
         if (GeneralUtils.getMonthLength(month)
-        == GeneralUtils.SHORT_MONTH_LENGTH) {
+        == GeneralUtils.SHORT_MONTH_LEN) {
             throw new IllegalArgumentException();
         }
     }

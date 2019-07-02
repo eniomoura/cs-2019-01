@@ -6,24 +6,20 @@ public final class CalendarUtils {
     }
     public static int run(final String[] args)
     throws IllegalArgumentException {
-        try {
-            if (
-                ValidatingUtils.validateArgs(args)
-                && ValidatingUtils.validateWeekDay(
-                    args[GeneralUtils.WEEKDAY_INDEX])
-                && ValidatingUtils.validateInput(
-                    Integer.parseInt(args[GeneralUtils.LEAP_INDEX]),
-                    args[GeneralUtils.REF_INDEX])
-                && ValidatingUtils.validateInput(
-                    Integer.parseInt(args[GeneralUtils.LEAP_INDEX]),
-                    args[GeneralUtils.TARGET_INDEX])
-            ) {
-                return CalculateDayUtils.getWeekDay(args);
-            } else {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException ex) {
-            throw ex;
+        if (
+            ValidatingUtils.validateArgs(args)
+            && ValidatingUtils.validateWeekDay(
+                args[GeneralUtils.WEEKDAY_INDEX])
+            && ValidatingUtils.validateInput(
+                Integer.parseInt(args[GeneralUtils.LEAP_INDEX]),
+                args[GeneralUtils.REF_INDEX])
+            && ValidatingUtils.validateInput(
+                Integer.parseInt(args[GeneralUtils.LEAP_INDEX]),
+                args[GeneralUtils.TARGET_INDEX])
+        ) {
+            return CalculateDayUtils.getWeekDay(args);
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }

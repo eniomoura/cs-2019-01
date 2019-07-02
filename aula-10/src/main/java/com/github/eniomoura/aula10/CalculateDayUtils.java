@@ -13,17 +13,17 @@ public final class CalculateDayUtils {
                         args[GeneralUtils.WEEKDAY_INDEX]);
         final String ref = args[GeneralUtils.REF_INDEX],
                      targetDate = args[GeneralUtils.TARGET_INDEX];
-        final int iterationDirection = targetDate.compareTo(ref);
+        final int iterateDirection = targetDate.compareTo(ref);
         String referenceDate = ref;
         int returnValue = weekDay;
-        if (iterationDirection > 0) {
+        if (iterateDirection > 0) {
             while (!referenceDate.equals(targetDate)) {
                 referenceDate = incrementDay(referenceDate,
                 leapYear);
                 returnValue = incrementWeekDay(returnValue);
             }
         }
-        if (iterationDirection < 0) {
+        if (iterateDirection < 0) {
             while (!referenceDate.equals(targetDate)) {
                 referenceDate = decrementDay(referenceDate, leapYear);
                 returnValue = decrementWeekDay(returnValue);
@@ -39,7 +39,7 @@ public final class CalculateDayUtils {
         int day = GeneralUtils.getDayFromDate(date);
         if (GeneralUtils.JANUARY == month) {
             if (day == 1) {
-                day = GeneralUtils.LONG_MONTH_LENGTH;
+                day = GeneralUtils.LONG_MONTH_LEN;
                 month = decrementMonth(month);
                 year--;
             } else {
@@ -55,17 +55,17 @@ public final class CalculateDayUtils {
                 day--;
             }
         } else if (GeneralUtils.getMonthLength(decrementMonth(month))
-        == GeneralUtils.LONG_MONTH_LENGTH) {
+        == GeneralUtils.LONG_MONTH_LEN) {
             if (day == 1) {
-                day = GeneralUtils.LONG_MONTH_LENGTH;
+                day = GeneralUtils.LONG_MONTH_LEN;
                 month = decrementMonth(month);
             } else {
                 day--;
             }
         } else if (GeneralUtils.getMonthLength(decrementMonth(month))
-        == GeneralUtils.SHORT_MONTH_LENGTH) {
+        == GeneralUtils.SHORT_MONTH_LEN) {
             if (day == 1) {
-                day = GeneralUtils.SHORT_MONTH_LENGTH;
+                day = GeneralUtils.SHORT_MONTH_LEN;
                 month = decrementMonth(month);
             } else {
                 day--;
@@ -80,7 +80,7 @@ public final class CalculateDayUtils {
         int month = GeneralUtils.getMonthFromDate(date);
         int day = GeneralUtils.getDayFromDate(date);
         if (GeneralUtils.DECEMBER == month) {
-            if (day == GeneralUtils.LONG_MONTH_LENGTH) {
+            if (day == GeneralUtils.LONG_MONTH_LEN) {
                 day = 1;
                 month = incrementMonth(month);
                 year++;
@@ -102,16 +102,16 @@ public final class CalculateDayUtils {
                 day++;
             }
         } else if (GeneralUtils.getMonthLength(month)
-        == GeneralUtils.SHORT_MONTH_LENGTH) {
-            if (day == GeneralUtils.SHORT_MONTH_LENGTH) {
+        == GeneralUtils.SHORT_MONTH_LEN) {
+            if (day == GeneralUtils.SHORT_MONTH_LEN) {
                 day = 1;
                 month = incrementMonth(month);
             } else {
                 day++;
             }
         } else if (GeneralUtils.getMonthLength(month)
-        == GeneralUtils.LONG_MONTH_LENGTH) {
-            if (day == GeneralUtils.LONG_MONTH_LENGTH) {
+        == GeneralUtils.LONG_MONTH_LEN) {
+            if (day == GeneralUtils.LONG_MONTH_LEN) {
                 day = 1;
                 month = incrementMonth(month);
             } else {
@@ -131,10 +131,10 @@ public final class CalculateDayUtils {
 
     public static boolean isLeapYear(final int leapYear,
                                      final int year) {
-        final int leapYearPeriodicity = 4;
+        final int freqLeapYear = 4;
         final int century = 100;
         final int fourCenturies = 400;
-        if ((leapYear - year) % leapYearPeriodicity == 0) {
+        if ((leapYear - year) % freqLeapYear == 0) {
             return year % century != 0 || year % fourCenturies != 0;
         }
         return false;

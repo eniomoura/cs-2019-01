@@ -1,10 +1,10 @@
 package com.github.eniomoura.aula10;
 
-public final class GeneralUtils {
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-    /** construtor private explicitando classe utilitaria. */
-    private GeneralUtils() {
-    }
+public final class GeneralUtils {
     /** Valor de retorno caso o processamento retornar erro */
     static final int EXECUTION_ERROR = -1;
     /** Número de parâmetros de CLI para o programa */
@@ -22,9 +22,9 @@ public final class GeneralUtils {
     /** Menor ano bissexto possível */
     static final int FIRST_LEAP_YEAR = 1;
     /** Número de dias dos meses mais longos */
-    static final int LONG_MONTH_LENGTH = 31;
+    static final int LONG_MONTH_LEN = 31;
     /** Número de dias dos meses mais curtos (30 dias) */
-    static final int SHORT_MONTH_LENGTH = 30;
+    static final int SHORT_MONTH_LEN = 30;
     /** Último dia de fevereiro em ano normal. */
     static final int LAST_FEB_NON_LEAP = 28;
     /** Último dia de fevereiro em ano bissexto. */
@@ -48,9 +48,27 @@ public final class GeneralUtils {
     private static final int YEAR_LENGTH = 4;
     private static final int DAY_MONTH_LENGTH = 2;
 
+    private static final Map<Integer, Integer> MONTH_LENGTHS =
+    Stream.of(new Integer[][] {
+        {JANUARY, LONG_MONTH_LEN},
+        {MARCH, LONG_MONTH_LEN},
+        {APRIL, SHORT_MONTH_LEN},
+        {MAY, LONG_MONTH_LEN},
+        {JUNE, SHORT_MONTH_LEN},
+        {JULY, LONG_MONTH_LEN},
+        {AUGUST, LONG_MONTH_LEN},
+        {SEPTEMBER, SHORT_MONTH_LEN},
+        {OCTOBER, LONG_MONTH_LEN},
+        {NOVEMBER, SHORT_MONTH_LEN},
+        {DECEMBER, LONG_MONTH_LEN}
+        }).collect(Collectors.toMap(data -> data[0], data -> data[1]));
+
+    /** construtor private explicitando classe utilitaria. */
+    private GeneralUtils() {
+    }
+
     public static int getYearFromDate(final String date) {
-        final int year = Integer.parseInt(date.substring(0, YEAR_LENGTH));
-        return year;
+        return Integer.parseInt(date.substring(0, YEAR_LENGTH));
     }
 
     public static int getMonthFromDate(final String date) {
@@ -68,31 +86,6 @@ public final class GeneralUtils {
     }
 
     public static int getMonthLength(final int month) {
-        switch (month) {
-            case JANUARY:
-            return LONG_MONTH_LENGTH;
-            case MARCH:
-            return LONG_MONTH_LENGTH;
-            case APRIL:
-            return SHORT_MONTH_LENGTH;
-            case MAY:
-            return LONG_MONTH_LENGTH;
-            case JUNE:
-            return SHORT_MONTH_LENGTH;
-            case JULY:
-            return LONG_MONTH_LENGTH;
-            case AUGUST:
-            return LONG_MONTH_LENGTH;
-            case SEPTEMBER:
-            return SHORT_MONTH_LENGTH;
-            case OCTOBER:
-            return LONG_MONTH_LENGTH;
-            case NOVEMBER:
-            return SHORT_MONTH_LENGTH;
-            case DECEMBER:
-            return LONG_MONTH_LENGTH;
-            default:
-            throw new IllegalArgumentException();
-        }
+        return MONTH_LENGTHS.get(month);
     }
 }

@@ -264,8 +264,8 @@
                 <version>2.1</version>
                 <configuration>
                     <failOnViolation>true</failOnViolation>
-                    <ccnLimit>111</ccnLimit>
-                    <ncssLimit>90</ncssLimit>
+                    <ccnLimit>120</ccnLimit>
+                    <ncssLimit>120</ncssLimit>
                 </configuration>
             </plugin>
 
