@@ -17,5 +17,8 @@
     "type": "git",
     "url": "git+https://github.com/kyriosdata/exemplo.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "is-letter": "^1.1.1"
+  }
 }

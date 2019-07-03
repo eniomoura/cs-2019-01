@@ -1,3 +1,5 @@
+var isLetter = require('is-letter');
+
 function lesserTemperature(temps) {
     returnValue = temps[0];
     for (i = 1; i < temps.length; i++) {
@@ -30,8 +32,8 @@ function equalValueCount(numbers, equalTo) {
 
 function countChars(chars){
     returnValue = 0;
-    for (i = 0; i < chars.length; i++) {  
-        if (Character.isLetter(chars.charAt(i))) {
+    for (i = 0; i < chars.length; i++) {
+        if (isLetter(chars.charAt(i))) {
             returnValue++;
         }
     }
