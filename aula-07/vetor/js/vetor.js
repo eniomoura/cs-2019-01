@@ -40,4 +40,4 @@ function countChars(chars){
     return returnValue;
 }
 
-module.exports = { menorTemperatura: lesserTemperature, somaImpares, numValoresIguais, countChars };
+module.exports = { lesserTemperature, oddSum, equalValueCount, countChars };
