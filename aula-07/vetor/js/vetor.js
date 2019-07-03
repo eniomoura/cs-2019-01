@@ -1,31 +1,41 @@
-function menorTemperatura(temperaturas) {
-    returnValue = temperaturas[0];
-    for (i = 1; i < temperaturas.length; i++) {
-        if (returnValue > temperaturas[i]) {
-            returnValue = temperaturas[i];
+function lesserTemperature(temps) {
+    returnValue = temps[0];
+    for (i = 1; i < temps.length; i++) {
+        if (returnValue > temps[i]) {
+            returnValue = temps[i];
         }
     }
     return returnValue;
 }
 
-function somaImpares(inteiros) {
+function oddSum(integers) {
     returnValue = 0;
-    for (i = 0; i < inteiros.length; i++) {
-        if (inteiros[i] % 2 == 1) {
-            returnValue = returnValue + inteiros[i];
+    for (i = 0; i < integers.length; i++) {
+        if (integers[i] % 2 == 1) {
+            returnValue = returnValue + integers[i];
         }
     }
     return returnValue;
 }
 
-function numValoresIguais(numeros, igualA) {
+function equalValueCount(numbers, equalTo) {
     returnValue = 0;
-    for (i = 0; i < numeros.length; i++) {
-        if (numeros[i] == igualA) {
+    for (i = 0; i < numbers.length; i++) {
+        if (numbers[i] == equalTo) {
             returnValue++;
         }
     }
     return returnValue;
 }
 
-module.exports = { menorTemperatura, somaImpares, numValoresIguais };
+function countChars(chars){
+    returnValue = 0;
+    for (i = 0; i < chars.length; i++) {  
+        if (Character.isLetter(chars.charAt(i))) {
+            returnValue++;
+        }
+    }
+    return returnValue;
+}
+
+module.exports = { menorTemperatura: lesserTemperature, somaImpares, numValoresIguais, countChars };
