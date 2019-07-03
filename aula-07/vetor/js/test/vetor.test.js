@@ -13,5 +13,5 @@ test("teste valores iguais", () => {
 });
 
 test("contar letras", () => {
-    expect(funcoes.countChars([1, 2, 3], 2)).toBe(1);
+    expect(funcoes.countChars('abca')).toBe(4);
 });
