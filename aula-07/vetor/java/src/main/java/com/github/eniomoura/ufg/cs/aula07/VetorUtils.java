@@ -6,6 +6,9 @@
 
 package com.github.eniomoura.ufg.cs.aula07;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Classe contendo as operações com vetores solicitadas na aula 07.
  * A solicitação pode ser encontrada em:
@@ -58,5 +61,26 @@ public final class VetorUtils {
             }
         }
         return returnValue;
+    }
+
+    public static String mostFrequentWord(final String string){
+        Map<String, Integer> frequency = new HashMap<String, Integer>();
+        String[] words = string.split(" ");
+        for(String word : words){
+            if(frequency.get(word)!=null){
+                frequency.put(word, frequency.get(word) + 1);
+            } else {
+                frequency.put(word, 1);
+            }
+        }
+        int mostOccurrences = 0;
+        String mostFrequentWord = words[0];
+        for(String word : words){
+            if(frequency.get(word) > mostOccurrences){
+                mostOccurrences = frequency.get(word);
+                mostFrequentWord = word;
+            }
+        }
+        return mostFrequentWord;
     }
 }
