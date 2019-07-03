@@ -61,4 +61,36 @@ function mostFrequentWord(string) {
     return returnValue;
 }
 
-module.exports = { lesserTemperature, oddSum, equalValueCount, countChars, mostFrequentWord };
+function mostFrequentNumbers(range) {
+    let array = new Array();
+    for(let i = 0; i < 1000000; i++){
+        array[i] = Math.floor(Math.random() * (range + 1));
+    }
+    array.sort();
+    let numbersMap = new Map();
+    for(let number of array){
+        if(numbersMap.get(number)){
+            numbersMap.set(number, numbersMap.get(number) + 1);
+        } else {
+            numbersMap.set(number, 1);
+        }
+    }
+    let occurrences = 0;
+    for(let number of array){
+        if(numbersMap.get(number) > occurrences){
+            occurrences = numbersMap.get(number);
+        }
+    }
+    let returnValue = new Array();
+    let i = 0;
+    for(let j of array){
+        if(numbersMap.get(j) == occurrences && returnValue[i - 1] != j){
+            returnValue[i] = j;
+            i++;
+        }
+    }
+    returnValue.sort();
+    return returnValue;
+}
+
+module.exports = { lesserTemperature, oddSum, equalValueCount, countChars, mostFrequentWord, mostFrequentNumbers };

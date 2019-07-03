@@ -19,3 +19,7 @@ test("contar letras", () => {
 test("palavra mais frequente", () => {
     expect(funcoes.mostFrequentWord("ana banana gosta de banana")).toBe("banana");
 });
+
+test("numeros mais frequentes", () => {
+    expect(funcoes.mostFrequentNumbers(10)[0]).toBeLessThan(10);
+});

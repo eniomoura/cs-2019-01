@@ -22,7 +22,7 @@ public final class VetorUtils {
 
     public static float lesserTemperature(final float[] temperatures) {
         float lesserTemperature = temperatures[0];
-        for (float temp : temperatures) {
+        for (final float temp : temperatures) {
             if (lesserTemperature > temp) {
                 lesserTemperature = temp;
             }
@@ -32,10 +32,12 @@ public final class VetorUtils {
 
     public static int OddSum(final int[] integers) {
         int oddSum = 0;
-        for (int integer : integers) {
-            if (integer % 2 == 1) {
-                oddSum += integer;
-            }
+        for (final int integer : integers) {
+        final int divisor = 2;
+        final int odd = 1;
+        if (integer % divisor == odd) {
+            oddSum += integer;
+        }
         }
         return oddSum;
     }
@@ -43,7 +45,7 @@ public final class VetorUtils {
     public static int equalValueCount(final double[] numbers,
                                       final double equalTo) {
         int equalValueCount = 0;
-        for (double number : numbers) {
+        for (final double number : numbers) {
             if (number == equalTo) {
                 equalValueCount++;
             }
@@ -54,8 +56,8 @@ public final class VetorUtils {
 
     public static int countChars(final String chars) {
         int returnValue = 0;
-        char[] charArray = chars.toCharArray();
-        for (char character : charArray) {
+        final char[] charArray = chars.toCharArray();
+        for (final char character : charArray) {
             if (Character.isLetter(character)) {
                 returnValue++;
             }
@@ -64,19 +66,19 @@ public final class VetorUtils {
     }
 
     public static String mostFrequentWord(final String string){
-        Map<String, Integer> frequency = new HashMap<String, Integer>();
-        String[] words = string.split(" ");
-        for (String word : words){
-            if (frequency.get(word) != null) {
-                frequency.put(word, frequency.get(word) + 1);
-            } else {
+        final Map<String, Integer> frequency = new HashMap<String, Integer>();
+        final String[] words = string.split(" ");
+        for (final String word : words) {
+            if (frequency.get(word) == null) {
                 frequency.put(word, 1);
+            } else {
+                frequency.put(word, frequency.get(word) + 1);
             }
         }
         int mostOccurrences = 0;
         String mostFrequentWord = words[0];
-        for (String word : words) {
-            if (frequency.get(word) > mostOccurrences){
+        for (final String word : words) {
+            if (frequency.get(word) > mostOccurrences) {
                 mostOccurrences = frequency.get(word);
                 mostFrequentWord = word;
             }
