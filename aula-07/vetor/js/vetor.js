@@ -2,9 +2,9 @@ var isLetter = require('is-letter');
 
 function lesserTemperature(temps) {
     returnValue = temps[0];
-    for (i = 1; i < temps.length; i++) {
-        if (returnValue > temps[i]) {
-            returnValue = temps[i];
+    for (let temp of temps) {
+        if (returnValue > temp) {
+            returnValue = temp;
         }
     }
     return returnValue;
@@ -12,9 +12,9 @@ function lesserTemperature(temps) {
 
 function oddSum(integers) {
     returnValue = 0;
-    for (i = 0; i < integers.length; i++) {
-        if (integers[i] % 2 == 1) {
-            returnValue = returnValue + integers[i];
+    for (let integer of integers) {
+        if (integer % 2 == 1) {
+            returnValue = returnValue + integer;
         }
     }
     return returnValue;
@@ -22,8 +22,8 @@ function oddSum(integers) {
 
 function equalValueCount(numbers, equalTo) {
     returnValue = 0;
-    for (i = 0; i < numbers.length; i++) {
-        if (numbers[i] == equalTo) {
+    for (let number of numbers) {
+        if (number == equalTo) {
             returnValue++;
         }
     }
@@ -40,4 +40,26 @@ function countChars(chars){
     return returnValue;
 }
 
-module.exports = { lesserTemperature, oddSum, equalValueCount, countChars };
+
+function mostFrequentWord(string) {
+    let frequency = new Map();
+    let words = string.split(" ");
+    for(let word of words){
+        if(frequency.get(word)){
+            frequency.set(word, frequency.get(word) + 1);
+        } else {
+            frequency.set(word, 1);
+        }
+    }
+    let word;
+    let mostOccurrences = 0;
+    for(let word of words){
+        if(frequency.get(word) > mostOccurrences){
+            mostOccurrences = frequency.get(word);
+            word = word;
+        }
+    }
+    return word;
+}
+
+module.exports = { lesserTemperature, oddSum, equalValueCount, countChars, mostFrequentWord };
