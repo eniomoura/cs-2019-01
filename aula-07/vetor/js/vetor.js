@@ -44,6 +44,7 @@ function countChars(chars){
 function mostFrequentWord(string) {
     let frequency = new Map();
     let words = string.split(" ");
+    let mostOccurrences = 0;
     for(let word of words){
         if(frequency.get(word)){
             frequency.set(word, frequency.get(word) + 1);
@@ -51,15 +52,14 @@ function mostFrequentWord(string) {
             frequency.set(word, 1);
         }
     }
-    let word;
-    let mostOccurrences = 0;
+    let returnValue;
     for(let word of words){
         if(frequency.get(word) > mostOccurrences){
             mostOccurrences = frequency.get(word);
-            word = word;
+            returnValue = word;
         }
     }
-    return word;
+    return returnValue;
 }
 
 module.exports = { lesserTemperature, oddSum, equalValueCount, countChars, mostFrequentWord };

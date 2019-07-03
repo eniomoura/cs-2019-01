@@ -15,3 +15,7 @@ test("teste valores iguais", () => {
 test("contar letras", () => {
     expect(funcoes.countChars('abca')).toBe(4);
 });
+
+test("palavra mais frequente", () => {
+    expect(funcoes.mostFrequentWord("ana banana gosta de banana")).toBe("banana");
+});
