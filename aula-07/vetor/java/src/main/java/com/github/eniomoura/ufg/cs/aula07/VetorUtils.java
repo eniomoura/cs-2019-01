@@ -55,7 +55,7 @@ public final class VetorUtils {
     public static int countChars(final String chars) {
         int returnValue = 0;
         char[] charArray = chars.toCharArray();
-        for (char character : charArray) {  
+        for (char character : charArray) {
             if (Character.isLetter(character)) {
                 returnValue++;
             }
@@ -66,8 +66,8 @@ public final class VetorUtils {
     public static String mostFrequentWord(final String string){
         Map<String, Integer> frequency = new HashMap<String, Integer>();
         String[] words = string.split(" ");
-        for(String word : words){
-            if(frequency.get(word)!=null){
+        for (String word : words){
+            if (frequency.get(word) != null) {
                 frequency.put(word, frequency.get(word) + 1);
             } else {
                 frequency.put(word, 1);
@@ -75,8 +75,8 @@ public final class VetorUtils {
         }
         int mostOccurrences = 0;
         String mostFrequentWord = words[0];
-        for(String word : words){
-            if(frequency.get(word) > mostOccurrences){
+        for (String word : words) {
+            if (frequency.get(word) > mostOccurrences){
                 mostOccurrences = frequency.get(word);
                 mostFrequentWord = word;
             }

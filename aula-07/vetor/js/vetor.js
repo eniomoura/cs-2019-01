@@ -40,7 +40,6 @@ function countChars(chars){
     return returnValue;
 }
 
-
 function mostFrequentWord(string) {
     let frequency = new Map();
     let words = string.split(" ");
