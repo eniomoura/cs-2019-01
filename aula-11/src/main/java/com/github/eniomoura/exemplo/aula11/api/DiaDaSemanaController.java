@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /** Função utilizada como lógica principal do Spring Boot. */
 @RestController
@@ -21,18 +22,10 @@ public final class DiaDaSemanaController {
      */
     @CrossOrigin
     @RequestMapping("ds")
-    public int diferencaDatas(@RequestParam(value = "data1") final String data1,
-            @RequestParam(value = "data2") final String data2) {
+    public int diferencaDatas(@RequestParam("data1") final String data1,
+            @RequestParam("data2") final String data2) {
         LocalDate primeiraData = localDateFromString(data1);
         LocalDate segundaData = localDateFromString(data2);
-
-        // Se data não é fornecida, ou é inválida, use o dia corrente.
-        if (primeiraData == null) {
-            primeiraData = LocalDate.now();
-        }
-        if (segundaData == null) {
-            primeiraData = LocalDate.now();
-        }
         return CalendarioUtils.calculateDifference(primeiraData, segundaData);
     }
 
@@ -40,7 +33,7 @@ public final class DiaDaSemanaController {
      * Recupera a instância de {@link LocalDate} correspondente à sequência de
      * caracteres.
      *
-     * Função retirada do recurso exemplo disponível em:
+     * Função retirada e modificada a partir do recurso exemplo disponível em:
      * https://github.com/kyriosdata/exemplo
      *
      * @param data Sequência de caracteres no formato dd-MM-yyyy.
@@ -50,9 +43,10 @@ public final class DiaDaSemanaController {
      */
     public LocalDate localDateFromString(final String data) {
         try {
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            final DateTimeFormatter fmt = DateTimeFormatter.ofPattern(
+                "dd/MM/yyyy");
             return LocalDate.parse(data, fmt);
-        } catch (Exception exp) {
+        } catch (IllegalArgumentException | DateTimeParseException exp) {
             return null;
         }
     }

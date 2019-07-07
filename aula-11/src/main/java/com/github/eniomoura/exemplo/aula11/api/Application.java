@@ -5,11 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /** Classe container do ponto de entrada do programa. */
 @SpringBootApplication
-public final class Application {
-
-    /** Construtor privado para explicitar classe utilitária. */
-    private Application() {
-    }
+public class Application {
 
     /** Função main, serve apenas para inicializar o Spring Boot.
      * @param args A requisição recebe parâmetros 'data1' e 'data2'.

@@ -52,7 +52,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.eniomoura.aula11.Calendario
+            com.github.eniomoura.aula11.api.Application
         </project.mainClass>
 
         <tools.dir>${project.basedir}/tools</tools.dir>
