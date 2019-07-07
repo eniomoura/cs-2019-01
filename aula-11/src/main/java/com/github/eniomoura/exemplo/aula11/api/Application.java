@@ -1,10 +1,4 @@
-/*
- * Copyright (c) 2016.
- * Fábrica de Software - Instituto de Informática (UFG)
- * Creative Commons Attribution 4.0 International License.
- */
-
-package com.github.kyriosdata.exemplo.application.api;
+package com.github.eniomoura.exemplo.aula11.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

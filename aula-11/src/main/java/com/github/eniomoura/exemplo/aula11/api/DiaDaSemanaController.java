@@ -1,6 +1,5 @@
-package com.github.kyriosdata.exemplo.application.api;
+package com.github.eniomoura.exemplo.aula11.api;
 
-import com.github.kyriosdata.exemplo.domain.Calendario;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,15 +9,11 @@ import java.time.format.DateTimeFormatter;
 
 @RestController
 public final class DiaDaSemanaController {
-
     @CrossOrigin
     @RequestMapping("ds")
     public int diferencaDatas(
-        @RequestParam(value = "data1",
-                      defaultValue = "não fornecida") final String data1,
-        @RequestParam(value = "data2",
-                      defaultValue = "não fornecida") final String data2) {
-
+        @RequestParam(value = "data1") final String data1,
+        @RequestParam(value = "data2") final String data2) {
         LocalDate primeiraData = localDateFromString(data1);
         LocalDate segundaData = localDateFromString(data2);
 
@@ -29,10 +24,7 @@ public final class DiaDaSemanaController {
         if (segundaData == null) {
             primeiraData = LocalDate.now();
         }
-
-        int dias = Calendario.calculaDiferenca(primeiraData, segundaData);
-
-        return dias;
+        return CalendarioUtils.calculateDifference(primeiraData, segundaData);
     }
 
     /**
@@ -49,7 +41,7 @@ public final class DiaDaSemanaController {
      */
     public LocalDate localDateFromString(String data) {
         try {
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             return LocalDate.parse(data, fmt);
         } catch (Exception exp) {
             return null;
