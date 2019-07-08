@@ -25,11 +25,11 @@ public final class DiferencaDatasController {
     public ResponseModel diferencaDatas(
             @RequestParam("data1") final String data1,
             @RequestParam("data2") final String data2) {
-            final LocalDate primeiraData = localDateFromString(data1);
-            final LocalDate segundaData = localDateFromString(data2);
+            LocalDate primeiraData = localDateFromString(data1);
+            LocalDate segundaData = localDateFromString(data2);
             if (primeiraData == null || segundaData == null) {
-                throw new IllegalArgumentException(
-                    "É necessário passar duas datas no formato 'dd/MM/yyyy.");
+                primeiraData = LocalDate.now();
+                segundaData = LocalDate.now();
             }
             return new ResponseModel(
                 CalendarioUtils.calculateDifference(primeiraData, segundaData));
