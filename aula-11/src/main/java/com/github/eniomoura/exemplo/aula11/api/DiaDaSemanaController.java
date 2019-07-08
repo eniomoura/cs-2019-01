@@ -22,11 +22,13 @@ public final class DiaDaSemanaController {
      */
     @CrossOrigin
     @RequestMapping("ds")
-    public int diferencaDatas(@RequestParam("data1") final String data1,
+    public ResponseModel diferencaDatas(
+            @RequestParam("data1") final String data1,
             @RequestParam("data2") final String data2) {
-        LocalDate primeiraData = localDateFromString(data1);
-        LocalDate segundaData = localDateFromString(data2);
-        return CalendarioUtils.calculateDifference(primeiraData, segundaData);
+        final LocalDate primeiraData = localDateFromString(data1);
+        final LocalDate segundaData = localDateFromString(data2);
+        return new ResponseModel(
+            CalendarioUtils.calculateDifference(primeiraData, segundaData));
     }
 
     /**

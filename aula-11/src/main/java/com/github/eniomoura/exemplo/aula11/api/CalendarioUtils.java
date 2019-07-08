@@ -19,7 +19,7 @@ public final class CalendarioUtils {
      */
     public static int calculateDifference(
         final LocalDate date1, final LocalDate date2) {
-        Long difference = date1.until(date2, ChronoUnit.DAYS);
+        final Long difference = date1.until(date2, ChronoUnit.DAYS);
         return difference.intValue();
     }
 }
