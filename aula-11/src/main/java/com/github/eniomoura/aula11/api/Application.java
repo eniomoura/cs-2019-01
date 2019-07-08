@@ -1,9 +1,11 @@
-package com.github.eniomoura.exemplo.aula11.api;
+package com.github.eniomoura.aula11.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/** Classe container do ponto de entrada do programa. */
+/** Classe container do ponto de entrada do programa.
+ * Não é criado o construtor privado sugerido pelo Checkstyle,
+ * pois isso causaria um problema com o Spring Boot.*/
 @SpringBootApplication
 public class Application {
 

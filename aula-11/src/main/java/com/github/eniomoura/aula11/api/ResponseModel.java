@@ -1,4 +1,4 @@
-package com.github.eniomoura.exemplo.aula11.api;
+package com.github.eniomoura.aula11.api;
 
 /** Classe definindo o formato de objeto de resposta JSON. */
 public final class ResponseModel {

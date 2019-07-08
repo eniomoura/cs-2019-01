@@ -1,7 +1,7 @@
-package com.github.eniomoura.exemplo.aula11.api;
+package com.github.eniomoura.aula11.api;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
 
 /** Função utilizada como lógica principal do Spring Boot. */
 @RestController
-public final class DiaDaSemanaController {
+public final class DiferencaDatasController {
 
     /** Requisição cross-origin efetuada no caminho '/ds' do servidor.
      * Retorna a diferença entre duas datas, 'data1' e 'data2'.
@@ -21,14 +21,18 @@ public final class DiaDaSemanaController {
      * @return A diferença entra as datas 'data1' e 'data2'.
      */
     @CrossOrigin
-    @RequestMapping("ds")
+    @GetMapping("ds")
     public ResponseModel diferencaDatas(
             @RequestParam("data1") final String data1,
             @RequestParam("data2") final String data2) {
-        final LocalDate primeiraData = localDateFromString(data1);
-        final LocalDate segundaData = localDateFromString(data2);
-        return new ResponseModel(
-            CalendarioUtils.calculateDifference(primeiraData, segundaData));
+            final LocalDate primeiraData = localDateFromString(data1);
+            final LocalDate segundaData = localDateFromString(data2);
+            if (primeiraData == null || segundaData == null) {
+                throw new IllegalArgumentException(
+                    "É necessário passar duas datas no formato 'dd/MM/yyyy.");
+            }
+            return new ResponseModel(
+                CalendarioUtils.calculateDifference(primeiraData, segundaData));
     }
 
     /**

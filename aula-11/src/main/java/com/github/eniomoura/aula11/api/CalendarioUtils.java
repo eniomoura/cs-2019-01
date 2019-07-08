@@ -1,4 +1,4 @@
-package com.github.eniomoura.exemplo.aula11.api;
+package com.github.eniomoura.aula11.api;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
