@@ -23,8 +23,10 @@ public final class DiferencaDatasController {
     @CrossOrigin
     @GetMapping("ds")
     public ResponseModel diferencaDatas(
-            @RequestParam("data1") final String data1,
-            @RequestParam("data2") final String data2) {
+            @RequestParam(value = "data1",
+                          defaultValue = "não fornecida") final String data1,
+            @RequestParam(value = "data2",
+                          defaultValue = "não fornecida") final String data2) {
             LocalDate primeiraData = localDateFromString(data1);
             LocalDate segundaData = localDateFromString(data2);
             if (primeiraData == null || segundaData == null) {
