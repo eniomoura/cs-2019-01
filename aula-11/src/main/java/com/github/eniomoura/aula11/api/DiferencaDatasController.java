@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -31,8 +33,11 @@ public final class DiferencaDatasController {
                 throw new IllegalArgumentException(
                     "É necessário passar duas datas no formato 'dd/MM/yyyy.");
             }
-            return new ResponseModel(
+            ResponseModel response = new ResponseModel(
                 CalendarioUtils.calculateDifference(primeiraData, segundaData));
+            LogManager.getLogger(DiferencaDatasController.class).info(
+                response + ", diferenca em dias: " + response.getDifference());
+            return response;
     }
 
     /**
