@@ -27,11 +27,11 @@ public class DiferencaDatasControllerTest {
 
     @Test
     public void entradasInvalidasController() {
-        assertThrows(IllegalArgumentException.class,
-            () -> ddc.diferencaDatas("", ""));
-        assertThrows(IllegalArgumentException.class,
-            () -> ddc.diferencaDatas("teste", "teste"));
-        assertThrows(IllegalArgumentException.class,
-            () -> ddc.diferencaDatas("99/99/9999", "99/99/9999"));
+        assertEquals(0 ,
+            ddc.diferencaDatas("", "").getDifference());
+        assertEquals(0 ,
+            ddc.diferencaDatas("teste", "teste").getDifference());
+        assertEquals(0 ,
+            ddc.diferencaDatas("99/99/9999", "99/99/9999").getDifference());
     }
 }
