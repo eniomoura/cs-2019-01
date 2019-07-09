@@ -13,24 +13,24 @@ public class CalendarioUtilsTest {
     public void entradasIguaisUtils() {
         assertEquals(0 , 
             CalendarioUtils.calculateDifference(
-                ddc.localDateFromString("08/07/2019"),
-                ddc.localDateFromString("08/07/2019")));
+                CalendarioUtils.localDateFromString("08/07/2019"),
+                CalendarioUtils.localDateFromString("08/07/2019")));
     }
 
     @Test
     public void diferencaPositivaUtils() {
         assertEquals(1 , 
             CalendarioUtils.calculateDifference(
-                ddc.localDateFromString("08/07/2019"),
-                ddc.localDateFromString("09/07/2019")));
+                CalendarioUtils.localDateFromString("08/07/2019"),
+                CalendarioUtils.localDateFromString("09/07/2019")));
     }
 
     @Test
     public void diferencaNegativaUtils() {
         assertEquals(-1 , 
             CalendarioUtils.calculateDifference(
-                ddc.localDateFromString("09/07/2019"),
-                ddc.localDateFromString("08/07/2019")));
+                CalendarioUtils.localDateFromString("09/07/2019"),
+                CalendarioUtils.localDateFromString("08/07/2019")));
     }
     
 	@Test

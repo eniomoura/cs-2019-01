@@ -30,12 +30,24 @@ public final class DiferencaDatasController {
                 CalendarioUtils.localDateFromString(firstDate);
             final LocalDate parsedSecondDate =
                 CalendarioUtils.localDateFromString(secondDate);
-            if (parsedFirstDate == null || parsedSecondDate == null) {
-                throw new IllegalArgumentException(
-                    "É necessário passar duas datas no formato 'dd/MM/yyyy.");
-            }
+            validaDatas(firstDate, secondDate);
             return new ResponseModel(
                 CalendarioUtils.calculateDifference(
                     parsedFirstDate, parsedSecondDate));
+    }
+
+    /** Testa as entradas obtidas e encerra a requisição
+     * com 'IllegalArgumentException' caso as datas não foram válidas.
+     * @param firstDate String da primeira data a ser validada.
+     * @param secondDate String da segunda data a ser validada.
+     * @throws IllegalArgumentException Causa essa exceção se a entrada
+     * não for válida.*/
+    protected static void validaDatas(final String firstDate,
+                                      final String secondDate)
+    throws IllegalArgumentException {
+        if (firstDate == null || secondDate == null) {
+            throw new IllegalArgumentException(
+                "É necessário passar duas datas no formato 'dd/MM/yyyy.");
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.github.eniomoura.aula11.api;
 
 import org.junit.jupiter.api.Test;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DiferencaDatasControllerTest {
@@ -26,12 +28,8 @@ public class DiferencaDatasControllerTest {
     }
 
     @Test
-    public void entradasInvalidasController() {
+    public void validatorTest(){
         assertThrows(IllegalArgumentException.class,
-            () -> ddc.calculateDifference("", ""));
-        assertThrows(IllegalArgumentException.class,
-            () -> ddc.calculateDifference("teste", "teste"));
-        assertThrows(IllegalArgumentException.class,
-            () -> ddc.calculateDifference("99/99/9999", "99/99/9999"));
+            () -> DiferencaDatasController.validaDatas(null, null));
     }
 }
