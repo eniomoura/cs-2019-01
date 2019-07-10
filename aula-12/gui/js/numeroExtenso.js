@@ -1,62 +1,47 @@
 /** Path para a requisição (URL) */
 const PATH = "http://localhost:8080/ds";
 
-/** Executa uma requisição XMLHTTP e calcula via Spring Boot
- * a diferença entre duas datas calculada no programa Java.
+/** Executa uma requisição XMLHTTP e recebe via Spring Boot
+ * um número por extenso concatenado no programa Java.
  * Após calculado, o valor é colocado no campo de resultado. */
 function atualizaNumeroExtenso() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let dds = extraiDiferencaDaResposta(xhttp.responseText);
+            let dds = extraiExtensoDaResposta(xhttp.responseText);
             document.getElementById("resultado").innerHTML = dds;
         }
     };
-    let data1 = formataData(document.getElementById("data1").value);
-    let data2 = formataData(document.getElementById("data2").value);
-    xhttp.open("GET", getRequestUrl(data1, data2), true);
+    let numero = formataData(document.getElementById("numero").value);
+    xhttp.open("GET", getRequestUrl(numero), true);
     xhttp.send();
 }
 
-/** Consulta a data de hoje e a insere nos dois campos de data */
-function dataCorrente() {
-    document.getElementById("data1").valueAsDate = new Date();
-    document.getElementById("data2").valueAsDate = new Date();
+/** Insere o valor 0 no input ao carregar a página. */
+function loadDefaultValue() {
+    document.getElementById("inputNumero").value = 0;
 }
 
 /** Funções para integração (satisfazer contrato do servidor)
  * @param {*} resposta uma ResponseModel da requisição contendo
- * a diferença entre duas datas como um JSON do tipo '{"difference":0}'
+ * a diferença entre duas datas como um JSON do tipo '{"extenso":"zero"}'
  * @returns a diferenca calculada pela requisição
  */
-function extraiDiferencaDaResposta(resposta) {
-    return JSON.parse(resposta).difference;
-}
-
-/** Recebe uma data de um campo de data, e retorna uma string
- * com a mesma data no formato 'dd/mm/aaaa'
- * @param {*} data uma data no formato lido de um campo HTML tipo date
- * @returns uma string com a mesma data no formato 'dd/mm/aaaa'
- */
-function formataData(data) {
-    let [a, m, d] = data.split("-");
-    return `${d}/${m}/${a}`;
+function extraiExtensoDaResposta(resposta) {
+    return JSON.parse(resposta).extenso;
 }
 
 /** Retorna a URL completa da requisição, montada.
- * @param {*} data1 primeira data passada como parametro
- * @param {*} data2 segunda data passada como parametro
+ * @param {*} numero o número passado como parâmetro
  * @returns a URL completa da requisição XMLHTTP.
  */
-function getRequestUrl(data1, data2){
-    console.log(PATH + "?data1=" + data1 + "&data2=" + data2);
-    return PATH + "?data1=" + data1 + "&data2=" + data2;
+function getRequestUrl(numero){
+    return PATH + "?numero=" + numero;
 }
 
 module.exports = {
-    atualizaDiferencaDatas: atualizaNumeroExtenso,
-    dataCorrente,
-    extraiDiferencaDaResposta,
-    formataData,
+    atualizaNumeroExtenso,
+    loadDefaultValue,
+    extraiExtensoDaResposta,
     getRequestUrl
 };

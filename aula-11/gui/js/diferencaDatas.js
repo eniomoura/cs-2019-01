@@ -49,7 +49,6 @@ function formataData(data) {
  * @returns a URL completa da requisição XMLHTTP.
  */
 function getRequestUrl(data1, data2){
-    console.log(PATH + "?data1=" + data1 + "&data2=" + data2);
     return PATH + "?data1=" + data1 + "&data2=" + data2;
 }
 
