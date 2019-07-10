@@ -1,0 +1,20 @@
+{
+  "name": "aula12-gui",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "doc": "jsdoc .",
+    "lint": "eslint \"./**/*.js\""
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0",
+    "jsdoc": "^3.6.2"
+  },
+  "description": "Implementação da aula 12",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eniomoura/cs-2019-01.git"
+  }
+}
