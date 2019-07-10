@@ -3,66 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dia da Semana</title>
+    <title>Diferença entre datas</title>
     <meta name="viewport" content="width=device-width, initial-sf=1">
-    <script>
-        // Path para a requisição (URL)
-        const PATH = "http://localhost:8080/ds";
-
-        function atualizaDiaDaSemana() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    let dds = extraiDiaDaSemanaDaResposta(xhttp.responseText);
-                    document.getElementById("resultado").innerHTML = dds;
-                }
-            };
-
-            let data1 = formataData(document.getElementById("data1").value);
-            let data2 = formataData(document.getElementById("data2").value);
-            xhttp.open("GET", PATH + "?data1=" + data1 + "&data2=" + data2, true);
-            xhttp.send();
-        }
-
-        function dataCorrente() {
-            document.getElementById("data1").valueAsDate = new Date();
-            document.getElementById("data2").valueAsDate = new Date();
-        }
-
-        // Funções para integração (satisfazer contrato do servidor)
-
-        function extraiDiaDaSemanaDaResposta(resposta) {
-            return JSON.parse(resposta).difference;
-        }
-
-        // Dia ou mês deve possuir dois dígitos
-        function formataDiaOuMes(n) {
-            return ("00" + n).substr(-2, 2);
-        }
-
-        // Ano deve possuir quatro dígitos
-        function formataAno(n) {
-            return ("0000" + n).substr(-4,4);
-        }
-
-        // ENTRADA: ano-mes-dia SAIDA: dd-mm-yyyy
-        function formataData(data) {
-            let [a, m, d] = data.split("-");
-
-            let dia = formataDiaOuMes(d);
-            let mes = formataDiaOuMes(m);
-            let ano = formataAno(a);
-
-            return `${d}/${m}/${a}`;
-        }
-    </script>
+    <script src="js/diferencaDatas.js"></script>
 </head>
 <body onload="dataCorrente()">
     <h1>Diferença entre duas datas</h1>
     <label for="data1">Formato: Dia / Mês / Ano</label><br>
-    <input type="date" id="data1" onchange="atualizaDiaDaSemana()">
-    <input type="date" id="data2" onchange="atualizaDiaDaSemana()">
-    <button onclick="atualizaDiaDaSemana();">Obtenha diferença</button><br>
+    <input type="date" id="data1" onchange="atualizaDiferencaDatas()">
+    <input type="date" id="data2" onchange="atualizaDiferencaDatas()">
+    <button onclick="atualizaDiferencaDatas();">Obtenha diferença</button><br>
     <span style="color: blue; font-size: 20pt;" id="resultado"></span>
 </body>
 </html>
