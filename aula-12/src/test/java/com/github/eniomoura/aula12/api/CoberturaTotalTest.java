@@ -1,4 +1,4 @@
-package com.github.eniomoura.aula11.api;
+package com.github.eniomoura.aula12.api;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +7,6 @@ import org.junit.jupiter.api.Test;
 public class CoberturaTotalTest {
     @Test
     public void coberturaTotal() {
-        new ResponseModel(0).getDifference();
+        new ResponseModel("Zero").getExtenso();
     }
 }

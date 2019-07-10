@@ -1,4 +1,4 @@
-package com.github.eniomoura.aula11.api;
+package com.github.eniomoura.aula12.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
