@@ -12,8 +12,7 @@ function atualizaNumeroExtenso() {
             document.getElementById("resultado").innerHTML = dds;
         }
     };
-    let numero = formataData(document.getElementById("numero").value);
-    xhttp.open("GET", getRequestUrl(numero), true);
+    xhttp.open("GET", getRequestUrl(document.getElementById("inputNumero").value), true);
     xhttp.send();
 }
 
@@ -24,7 +23,7 @@ function loadDefaultValue() {
 
 /** Funções para integração (satisfazer contrato do servidor)
  * @param {*} resposta uma ResponseModel da requisição contendo
- * a diferença entre duas datas como um JSON do tipo '{"extenso":"zero"}'
+ * um número extenso como um JSON do tipo '{"extenso":"zero"}'
  * @returns a diferenca calculada pela requisição
  */
 function extraiExtensoDaResposta(resposta) {
