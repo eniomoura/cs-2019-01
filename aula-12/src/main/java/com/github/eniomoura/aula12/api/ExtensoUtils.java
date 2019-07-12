@@ -103,13 +103,13 @@ public final class ExtensoUtils {
             if (numero == 0) {
                 return "zero";
             } else if (numero > 0 && numero < 10_000) {
-                return assembleString(numero);
+                return assembleString(numero).trim();
             } else {
                 throw new IllegalArgumentException(
                     "O número inserido deve estar entre 0 e 1000.");
             }
         } else {
-            return getEspeciais(numero);
+            return getEspeciais(numero).trim();
         }
     }
 
@@ -128,11 +128,9 @@ public final class ExtensoUtils {
             return assembleDoisDigitos(numero);
         } else if (numero < mil && numero > rangeCentenas) {
             return assembleTresDigitos(numero);
-        } else if (numero >= mil) {
+        } else {
             return assembleQuatroDigitos(numero);
         }
-        throw new IllegalArgumentException(
-            "O número inserido deve estar entre 0 e 1000.");
     }
 
     /**
@@ -164,11 +162,7 @@ public final class ExtensoUtils {
                 return getCentena() + " e" + getUnidade();
             }
         } else if (unidade == 0) {
-            if (getDezena() == null) {
-                return getCentena() + " e" + getEspeciais(unidade);
-            } else {
-                return getCentena() + " e" + getDezena();
-            }
+            return getCentena() + " e" + getDezena();
         } else {
             return getCentena() + " e" + getDezena() + " e" + getUnidade();
         }

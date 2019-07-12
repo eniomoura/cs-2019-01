@@ -17,7 +17,7 @@ public final class ExtensoController {
      */
     @CrossOrigin
     @GetMapping("ds")
-    public ResponseModel calculateDifference(
+    public ResponseModel writeInFull(
             @RequestParam("numero") final String numero) {
                 validaEntrada(numero);
             return new ResponseModel(
